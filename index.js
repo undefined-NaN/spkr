@@ -1,1 +1,3 @@
-//makes call to main server file in server directory to start server
+var app = require('./server/server.js');
+
+app.listen(8000);
