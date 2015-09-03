@@ -33,8 +33,10 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "bookshelf": "^0.8.2",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
+    "knex": "^0.8.6",
     "morgan": "^1.1.1",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
