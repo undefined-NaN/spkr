@@ -1,8 +1,38 @@
-<!-- main layoout, inclues javscript files -->
-<html>
-<head>
-</head>
-<body>
-<p>Hello, spkr!</p>
-</body>
+<!DOCTYPE html>
+<html ng-app='spkr'>
+  <head>
+    <meta charset="utf-8" />
+    <title>SPKR</title>
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>Welcome to SPKR!</h1>
+<script id='layout'>
+  <div class='navigation'>
+  <ul>
+    <li><a href='#' class='homepage'>Homepage</a></li>
+    <li><a href='#' class='newForm'>Make a Feedback Form</a></li>
+    <li><a href='#' class='previous'>Previous Presentations</a></li>
+  </ul>
+
+    <a href='/logout' class='logout'>Logout</a>
+    </div>
+  <div id='container'></div>
+</script>
+    <!-- the ng-view directive is where our templates will be loaded into when navigated to -->
+    <div ng-view></div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/feedback-form/feedbackForm.controller.js"></script>
+    <script src="app/homepage/homepage.controller.js"></script>
+    <script src="app/new-form/newForm.controller.js"></script>
+    <script src="app/previous-forms/previousForms.controller.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+  </body>
 </html>
