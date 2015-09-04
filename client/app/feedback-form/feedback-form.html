@@ -1,8 +1,8 @@
-<div id='feedbackForm'>
+<div id='feedbackForm' ng-controller='FeedbackController'>
     <h2>Speaker Feedback</h2>
     <h3>Insert Presentation Here</h3>
     <h3>Insert Date Here</h3>
-    <form name='feedbackForm' ng-controller='FeedbackController' class='feedbackForm'>
+    <form class='feedbackForm'>
         <p>Was the presentation organized well?</p>
         <input type="range" id="organization" min="0" max="100" step="1" ng-model='organization'>
         <p>Was the message clear?</p>
