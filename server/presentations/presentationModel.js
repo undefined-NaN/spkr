@@ -1,13 +1,13 @@
-var mongoose = require('mongoose'),
-
+var mongoose = require('mongoose');
+var User = require('../users/userModel');
+var Schema = mongoose.Schema;
 
 
 var PresentationSchema = new mongoose.Schema({
-  // associatedUser: {
-  //   type: String,
-  //   required: true
-  // }
-
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
   title: {
     type: String,
     required: true,
@@ -19,7 +19,7 @@ var PresentationSchema = new mongoose.Schema({
   scores:{
     type: Array,
     required: true
-  },
+  }
 
 });
 
