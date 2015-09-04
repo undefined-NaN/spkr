@@ -6,22 +6,23 @@
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
+
   <body>
-    <h1>Welcome to SPKR!</h1>
-  <div id='layout'></div>
-  <div class='navigation'>
-    <ul>
-      <li><a href='/#/homepage' class='homepage'>Homepage</a></li>
-      <li><a href='/#/new-form' class='newForm'>Make a Feedback Form</a></li>
-      <li><a href='/#/previous-forms' class='previous'>Previous Presentations</a></li>
-    </ul>
-
-    <a href='/#/logout' class='logout'>Logout</a>
+    <nav class='navbar'>
+      <div class= "container">
+      <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href='/#/homepage'>Profile</a></li>
+          <li><a href='/#/new-form'>Create</a></li>
+          <li><a href='/#/previous-forms'>History</a></li>
+          <li><a href='/#/logout'>logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div ng-view>
     </div>
-  <div id='container'></div>
-
-    <!-- the ng-view directive is where our templates will be loaded into when navigated to -->
-    <div ng-view></div>
+    
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="styles/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
