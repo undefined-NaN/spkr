@@ -1,8 +1,8 @@
-/*var mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     bcrypt   = require('bcrypt-nodejs'),
     Q        = require('q'),
+    //events   = require('./presentationModel')
     SALT_WORK_FACTOR  = 10;
-
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -15,8 +15,17 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  // presentations: {
+  //   type: Array,
+  //   required: true
+  // }, 
   salt: String
 });
+
+// UserSchema.methods.addPresentation = function (presentationId){
+  
+// }
 
 UserSchema.methods.comparePasswords = function (candidatePassword) {
   var defer = Q.defer();
@@ -46,7 +55,7 @@ UserSchema.pre('save', function (next) {
     }
 
     // hash the password along with our new salt
-    bcrypt.hash(user.password, salt, function(err, hash) {
+    bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) {
         return next(err);
       }
@@ -59,4 +68,4 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-module.exports = mongoose.model('users', UserSchema);*/
+module.exports = mongoose.model('users', UserSchema);
