@@ -5,7 +5,7 @@ angular.module('spkr.previous-forms', [])
       if (authed) {
         $location.path('/previous-forms');
       } else {
-        $location.path('/login')
+        $location.path('/landing')
       } 
     }, true);
   })

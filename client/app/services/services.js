@@ -38,7 +38,7 @@ angular.module('spkr.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.spkr');
-    $location.path('/login');
+    $location.path('/landing');
   };
 
 // this is standard to return an object of these factory functions

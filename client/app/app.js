@@ -12,6 +12,11 @@ angular.module('spkr', [
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
 
+    .when('/', {
+      templateUrl: 'app/auth/landing.html',
+      controller: 'AuthController'
+    })
+
     .when('/landing', {
       templateUrl: 'app/auth/landing.html',
       controller: 'AuthController'
@@ -53,7 +58,7 @@ angular.module('spkr', [
     })
     
     .when('/logout', {
-      templateUrl: 'app/auth/login.html',
+      templateUrl: 'app/auth/landing.html',
       controller: 'AuthController',
       resolve:{ function (Auth){
         Auth.signout();
