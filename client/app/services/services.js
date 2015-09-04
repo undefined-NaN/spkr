@@ -59,7 +59,7 @@ angular.module('spkr.services', [])
     var submitFeedback = function(user,presentation) {
       return $http({
         method: 'POST',
-        url: api/users/presentation/name,
+        url: 'api/users/presentation/name',
         data: presentation
       }).then(function(res){
         return res.data;
