@@ -46,6 +46,7 @@ angular.module('spkr', [
       templateUrl: 'app/previous-forms/previousForms.html',
       controller: 'PrevFormsController'
     })
+    
     .when('/logout', {
       templateUrl: 'app/auth/login.html',
       controller: 'AuthController',
