@@ -8,7 +8,6 @@ var PresentationSchema = new mongoose.Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-
   title: {
     type: String,
     required: true,
