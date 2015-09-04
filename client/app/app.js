@@ -32,6 +32,11 @@ angular.module('spkr', [
       controller: 'FeedbackController'
     })
 
+    .when('/feedback-form/:id', {
+      templateUrl: 'app/feedback-form/feedback-form.html',
+      controller: 'FeedbackController'
+    })
+
     .when('/homepage', {
       templateUrl: 'app/homepage/homepage.html',
       controller: 'HomepageController'
