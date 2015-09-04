@@ -3,7 +3,7 @@ var User = require('./userModel.js'),
     jwt  = require('jwt-simple');
 
 module.exports = {
-  signin: function (req, res, next) {
+  login: function (req, res, next) {
     var username = req.body.username,
         password = req.body.password;
 

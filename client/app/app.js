@@ -17,20 +17,20 @@ angular.module('spkr', [
       controller: 'AuthController'
     })
 
-//     .when('/login', {
-//       templateUrl: 'app/auth/login.html',
-//       controller: 'AuthController'
-//     })
+    .when('/login', {
+      templateUrl: 'app/auth/login.html',
+      controller: 'AuthController'
+    })
 
-//     .when('/signup', {
-//       templateUrl: 'app/auth/signup.html',
-//       controller: 'AuthController'
-//     })
+    .when('/signup', {
+      templateUrl: 'app/auth/signup.html',
+      controller: 'AuthController'
+    })
 
-//     .when('/feedback-form', {
-//       templateUrl: 'app/feedback-form/feedback-form.html',
-//       controller: 'FeedbackController'
-//     })
+    .when('/feedback-form', {
+      templateUrl: 'app/feedback-form/feedback-form.html',
+      controller: 'FeedbackController'
+    })
 
     .when('/homepage', {
       templateUrl: 'app/homepage/homepage.html',
@@ -45,6 +45,16 @@ angular.module('spkr', [
     .when('/previous-forms', {
       templateUrl: 'app/previous-forms/previousForms.html',
       controller: 'PrevFormsController'
+    })
+    
+    .when('/logout', {
+      templateUrl: 'app/auth/login.html',
+      controller: 'AuthController',
+      resolve:{ function (Auth){
+        Auth.signout();
+      }
+
+      }
     })
 
 //     // We add our $httpInterceptor into the array
