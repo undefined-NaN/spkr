@@ -1,4 +1,4 @@
-/*var User = require('./userModel.js'),
+var User = require('./userModel.js'),
     Q    = require('q'),
     jwt  = require('jwt-simple');
 
@@ -54,6 +54,7 @@ module.exports = {
       })
       .then(function (user) {
         // create token to send back for auth
+        console.log(user);
         var token = jwt.encode(user, 'secret');
         res.json({token: token});
       })
@@ -86,4 +87,4 @@ module.exports = {
         });
     }
   }
-};*/
+};

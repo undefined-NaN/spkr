@@ -1,11 +1,11 @@
 var express     = require('express');
-
+var mongoose = require('mongoose');
 var app = express();
 
 
 // configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
-
+mongoose.connect('mongodb://localhost/spkr');
 // export our app for testing and flexibility, required by index.js
 module.exports = app;
 
