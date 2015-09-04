@@ -6,6 +6,7 @@ angular.module('spkr.auth', [])
   $scope.user = {};
 
   $scope.login = function () {
+    console.log('inside Auth.login')
     Auth.login($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.spkr', token);
@@ -26,4 +27,9 @@ angular.module('spkr.auth', [])
         console.error(error);
       });
   };
+
+  // $scope.signout= function () {
+  //   Auth.signout()
+      
+  // };
 });

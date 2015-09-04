@@ -47,8 +47,13 @@ angular.module('spkr', [
       controller: 'PrevFormsController'
     })
     .when('/logout', {
-      templateUrl: 'app/auth/login.html'
-      //controller: 'PrevFormsController'
+      templateUrl: 'app/auth/login.html',
+      controller: 'AuthController',
+      resolve:{ function (Auth){
+        Auth.signout();
+      }
+
+      }
     })
 
 //     // We add our $httpInterceptor into the array

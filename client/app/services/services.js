@@ -9,7 +9,9 @@ angular.module('spkr.services', [])
   // after you login/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var login = function (user) {
+    console.log('inside login')
     return $http({
+
       method: 'POST',
       url: '/api/users/login',
       data: user
