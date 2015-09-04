@@ -5,7 +5,7 @@ angular.module('spkr.new-form', [])
       if (authed) {
         $location.path('/new-form');
       } else {
-        $location.path('/login')
+        $location.path('/landing')
       } 
     }, true);
   })

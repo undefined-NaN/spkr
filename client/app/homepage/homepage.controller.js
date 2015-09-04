@@ -4,7 +4,7 @@ angular.module('spkr.homepage', [])
       if (authed) {
         $location.path('/homepage');
       } else {
-        $location.path('/login')
+        $location.path('/landing')
       } 
     }, true);
   })
