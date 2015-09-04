@@ -1,0 +1,27 @@
+<div id='feedbackForm'>
+    <h2>Speaker Feedback</h2>
+    <h3>Insert Presentation Here</h3>
+    <h3>Insert Date Here</h3>
+    <form name='feedbackForm' ng-controller='FeedbackController' class='feedbackForm'>
+        <p>Was the presentation organized well?</p>
+        <input type="range" id="organization" min="0" max="100" step="1" ng-model='organization'>
+        <p>Was the message clear?</p>
+        <input type="range" id="clarity" min="0" max="100" step="1" ng-model='clarity'>
+        <p>Was the speaker loud enough?</p>
+        <input type="range" id="volume" min="0" max="100" step="1" ng-model='volume'>
+        <p>Did the speaker have appropriate posture?</p>
+        <input type="range" id="posture" min="0" max="100" step="1" ng-model='posture'>
+        <p>Did the speaker appear well prepared?</p>
+        <input type="range" id="prepared" min="0" max="100" step="1" ng-model='prepared'>
+        <p>Were the visual aids helpful?</p>
+        <input type="range" id="visualAids" min="0" max="100" step="1" ng-model='visualAids'>
+        <p>Did the speaker connect with the audience?</p>
+        <input type="range" id="connect" min="0" max="100" step="1" ng-model='connect'>
+        <p>Did the speaker answer questions appropriately?</p>
+        <input type="range" id="question" min="0" max="100" step="1" ng-model='question'>
+        <p>How would you rate the overall presentation?</p>
+        <input type="range" id="overall" min="0" max="100" step="1" ng-model='overall'>
+    </form>
+    <button ng-click='submitFeedback()'>Submit</button>
+
+</div>

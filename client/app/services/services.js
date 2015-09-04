@@ -14,8 +14,8 @@ angular.module('spkr.services', [])
       url: '/api/users/login',
       data: user
     })
-    .then(function (resp) {
-      return resp.data.token;
+    .then(function (res) {
+      return res.data.token;
     });
   };
 
@@ -25,8 +25,8 @@ angular.module('spkr.services', [])
       url: '/api/users/signup',
       data: user
     })
-    .then(function (resp) {
-      return resp.data.token;
+    .then(function (res) {
+      return res.data.token;
     });
   };
 
@@ -46,4 +46,27 @@ angular.module('spkr.services', [])
     isAuth: isAuth,
     signout: signout
   };
-});
+})
+
+
+
+
+
+
+// factory for feedback form 
+
+.factory('FeedbackService', function ($http, $location, $window) {
+    var submitFeedback = function(user,presentation) {
+      return $http({
+        method: 'POST',
+        url: api/users/presentation/name,
+        data: presentation
+      }).then(function(res){
+        return res.data;
+      })
+    };
+
+    return {
+      submitFeedback: submitFeedback
+    };
+})

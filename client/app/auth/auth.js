@@ -8,7 +8,6 @@ angular.module('spkr.auth', [])
   $scope.login = function () {
     Auth.login($scope.user)
       .then(function (token) {
-
         $window.localStorage.setItem('com.spkr', token);
         $location.path('/homepage');
       })
