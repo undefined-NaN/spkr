@@ -1,0 +1,9 @@
+<div class="container">
+	<form ng-controller="NewFormController" ng-submit="submit(presentation)" novalidate>
+		<label for="title">Presentation Title: </label>
+		<input id="title" name="title" type="test" ng-model="presentation.title"/>
+		<label for="date">Presentation Date: </label>
+		<input id="date" type="date" name="date" ng-model="presentation.date"/>
+		<input type="submit" value="Create Presentation"/>
+	</form>
+</div>

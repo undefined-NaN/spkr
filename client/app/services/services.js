@@ -71,4 +71,21 @@ angular.module('spkr.services', [])
     return {
       submitFeedback: submitFeedback
     };
+}).
+
+factory('Pres', function ($http, $location, $window) {
+    var createPresentation = function(presentation) {
+      console.log('in Pres#createPresentation', presentation);
+      return $http({
+        method: 'POST',
+        url: 'api/presentations/',
+        data: presentation
+      }).then(function(res){
+        return res.data;
+      })
+    };
+
+    return {
+      createPresentation: createPresentation
+    };
 })
