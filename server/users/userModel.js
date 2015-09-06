@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
     bcrypt   = require('bcrypt-nodejs'),
     Q        = require('q'),
-    //events   = require('./presentationModel')
+    presentations = require('../presentations/presentationModel'),
+    Schema = mongoose.Schema,
     SALT_WORK_FACTOR  = 10;
 
 var UserSchema = new mongoose.Schema({
@@ -16,10 +17,8 @@ var UserSchema = new mongoose.Schema({
     required: true
   },
 
-  // presentations: {
-  //   type: Array,
-  //   required: true
-  // }, 
+  presentations: [{type: Schema.Types.ObjectId, ref: 'presentations'}],
+  
   salt: String
 });
 
