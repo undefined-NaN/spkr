@@ -2,6 +2,7 @@ var User = require('../users/userModel.js'),
     Presentation  = require('./presentationModel.js'),
     Q    = require('q'),
     mongoose = require('mongoose'),
+    Feedback = require('../feedback/feedbackModel'),
     Schema = mongoose.Schema;
     //jwt  = require('jwt-simple');
 
@@ -59,20 +60,39 @@ module.exports = {
   },
   //obtain presentation data from a given date by id
   onePres: function(req, res, next){
-    //presentationId might be retrievable from URL
-    var presentationId = req.body.presentationId;
+    var presentationId = mongoose.Types.ObjectId(req.params.id);
 
-    var findPres = Q.nbind(Presentation.findOne, Presentation);
+    // var findPres = Q.nbind(Presentation.findOne, Presentation);
+   Feedback.find({_presentation: presentationId}, function(err, feedbacks){
+    res.json(feedbacks);
+   })
 
-    findPres({presentationId: presentationid})
-    .then(function(presentation){
-      if(presentation){
-        res.json(presentation.scores);
-      }
-      else{
-        console.log('error retrieving presentation info')
-      }
-    })
+    // findPres({_id: presentationId})
+    // .then(function(presentation){
+    //   if(presentation){
+    //     return presentation.feedbacks;
+    //   }else{
+    //     res.send('error retrieving presentation info')
+    //   }
+    // })
+    // .then(function(feedbacks){
+    //   var scores = [];
+    //   for(var i=0; i<feedbacks.length; i++){
+    //     return Feedback.findAll({ _id: feedbacks[i]}, function(err, feedback){
+    //       scores.push(feedback)
+    //     })
+    //   }
+    //   return scores
+    // })
+    // .then(function(scores){
+    //   res.json(scores);
+    // })
+  
+  },
+
+  allPres: function(req, res, next){
+    
+    
   }
 
 };
