@@ -1,6 +1,8 @@
 var Presentation = require('../presentations/presentationModel.js'),
     Feedback  = require('./feedbackModel.js'),
-    Q    = require('q');
+    Q    = require('q'),
+    mongoose = require('mongoose');
+
     //jwt  = require('jwt-simple');
 
 var presentationId;
@@ -8,14 +10,20 @@ var presentationId;
 module.exports = {
 
   add: function(req, res, next){
-    //req.params(:feedback_id)
-    presentationId = req.body.presentationId;
+    var presentationId = mongoose.Types.ObjectId(req.params.id),
+        feedbackId,
+        findPresentation = Q.nbind(Presentation.findOne, Presentation),
+        create = Q.nbind(Feedback.create, Feedback);
 
-   // var findPresentation = Q.nbind(Presentation.onePres, Presentation), 
-     var create = Q.nbind(Feedback.create, Feedback);
+    findPresentation({_id: presentationId})
+    .then(function(presentation){
+      if (!presentation){
+        res.json("Presentation does not exist")
+      }
+    })
 
     var newFeedback = {
-      presentationId: presentationId,
+      _presentation: presentationId,
       organization: req.body.organization,
       clarity: req.body.clarity,
       volume: req.body.volume,
@@ -25,16 +33,19 @@ module.exports = {
       connect: req.body.connect,
       question: req.body.question,
       overall: req.body.overall
-    }
+    };
 
-    create(newFeedback).then(function(feedback, err){
-      //console.log(err);
-      //console.log(feedback.id)
-      res.send('Thanks for providing feedback')
-    });
-
-  },
-
-  id: presentationId
-
-};
+    create(newFeedback)
+    .then(function(feedback){ 
+      feedbackId = feedback.id
+    })
+    .then(function(){
+      return findPresentation({_id: presentationId})
+    })
+    .then(function(presentation){
+      presentation.feedbacks.push(feedbackId)
+      presentation.save()
+      res.json("Thanks for providing feedback!")
+    })
+  }
+}

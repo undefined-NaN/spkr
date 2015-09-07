@@ -1,12 +1,9 @@
 var mongoose = require('mongoose');
-var Presentation = require('../presentations/presentationModel.js');
+var presentation = require('../presentations/presentationModel.js');
 var Schema = mongoose.Schema;
 
 var FeedbackSchema = new mongoose.Schema({
-  presentation: {
-    type: Schema.ObjectId,
-    ref: 'Presentation'
-  },
+  _presentation: {type: Schema.Types.ObjectId, ref: 'presentation'},
 
   organization: {
     type: Number,

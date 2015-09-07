@@ -17,7 +17,7 @@ module.exports = {
             .then(function(foundUser) {
               if (foundUser) {
                 var token = jwt.encode(user, 'secret');
-                res.json({token: token});
+                res.json({token: token, userid: user._id});
               } else {
                 return next(new Error('No user'));
               }
@@ -56,7 +56,7 @@ module.exports = {
         // create token to send back for auth
         console.log(user);
         var token = jwt.encode(user, 'secret');
-        res.json({token: token});
+        res.json({token: token, userid: user._id});
       })
       .fail(function (error) {
         next(error);

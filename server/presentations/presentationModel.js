@@ -1,13 +1,11 @@
 var mongoose = require('mongoose');
 var User = require('../users/userModel');
 var Schema = mongoose.Schema;
+var feedback = require('../feedback/feedbackModel');
 
 
 var PresentationSchema = new mongoose.Schema({
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  },
+  _presenter: {type: Schema.Types.ObjectId, ref: 'User'},
   title: {
     type: String,
     required: true,
@@ -16,11 +14,7 @@ var PresentationSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  scores:{
-    type: Array,
-    required: true
-  }
-
+  feedbacks: [{type: Schema.Types.ObjectId, ref: 'feedback'}]
 });
 
 
