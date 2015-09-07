@@ -1,0 +1,13 @@
+body, html {
+	height: 80%;
+	width: 80%;
+	position: absolute;
+}
+main {
+	min-height: 50%;
+}
+#landing {
+	width: 70%;
+	text-align: center;
+	margin: 0 auto;
+}

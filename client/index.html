@@ -8,25 +8,35 @@
   </head>
 
   <body>
-    <nav class='navbar'>
-      <div class= "container">
-      <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href='/#/homepage'>Profile</a></li>
-          <li><a href='/#/new-form'>Create</a></li>
-          <li><a href='/#/previous-forms'>History</a></li>
-          <li><a href='/#/logout'>logout</a></li>
-        </ul>
+    <header class= "container">
+      <nav class='navbar container'>
+        <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href='/#/homepage'>Profile</a></li>
+            <li><a href='/#/new-form'>Create</a></li>
+            <li><a href='/#/previous-forms'>History</a></li>
+            <li><a href='/#/logout'>logout</a></li>
+          </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div ng-view>
       </div>
-    </nav>
-    
-    <div ng-view>
-    </div>
+    </main>
+
+    <footer class="container">
+      <nav class='navbar'>
+        <a target="_blank" href="/#/" class="navbar-brand">MakerSquare</a>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a target="_blank" href="https://github.com/glorypod">glory-pod.io</a>
+          </ul>
+      </nav>
+    </footer>
     
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js"></script>
-
     <script src="app/auth/auth.js"></script>
     <script src="app/feedback-form/feedbackForm.controller.js"></script>
     <script src="app/homepage/homepage.controller.js"></script>
