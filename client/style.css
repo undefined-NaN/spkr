@@ -3,11 +3,16 @@ body, html {
 	width: 80%;
 	position: absolute;
 }
+h1 {
+	text-align: center;
+}
 main {
 	min-height: 50%;
 }
 #landing {
 	width: 70%;
 	text-align: center;
+}
+#new-presentation {
 	margin: 0 auto;
 }
