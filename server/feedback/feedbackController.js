@@ -15,6 +15,13 @@ module.exports = {
         findPresentation = Q.nbind(Presentation.findOne, Presentation),
         create = Q.nbind(Feedback.create, Feedback);
 
+    findPresentation({_id: presentationId})
+    .then(function(presentation){
+      if (!presentation){
+        res.json("Presentation does not exist")
+      }
+    })
+
     var newFeedback = {
       _presentation: presentationId,
       organization: req.body.organization,

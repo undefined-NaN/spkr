@@ -39,7 +39,8 @@ module.exports = {
     .then(function(founduser){
       founduser.presentations.push(presentationid)
       founduser.save()
-      res.json({presentation_id: presentationid})
+      newPresentation.presentationid = presentationid
+      res.json({newPresentation: newPresentation })
     })
 
   },
