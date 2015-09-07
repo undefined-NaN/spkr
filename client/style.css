@@ -3,7 +3,7 @@ body, html {
 	width: 100%;
 	position: absolute;
 }
-h1 {
+h1, h2, h3, h4 {
 	text-align: center;
 }
 main {
@@ -14,7 +14,7 @@ main {
 	text-align: center;
 	margin: 0 auto;
 }
-#new-presentation, #login, #signup {
+#new-presentation, #login, #signup, #presentation-feedback{
 	width: 25%;
 	margin: 3% auto;
 }
