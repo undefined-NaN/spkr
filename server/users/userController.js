@@ -1,6 +1,8 @@
 var User = require('./userModel.js'),
     Q    = require('q'),
-    jwt  = require('jwt-simple');
+    jwt  = require('jwt-simple'),
+    mongoose = require('mongoose'),
+    Presentation  = require('../presentations/presentationModel.js');
 
 module.exports = {
   login: function (req, res, next) {
@@ -86,5 +88,22 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  serveData: function(req, res, next){
+  var userid = mongoose.Types.ObjectId(req.params.id);
+  var username;
+  User.find({_id: userid})
+              .populate('presentations')
+              .then(function(user){
+                username = user[0].username
+              })
+              .then(function(){
+                return Presentation.find({_presenter: userid}).populate("feedbacks")
+              })
+              .then(function(feedbacks){
+                feedbacks.unshift({username: username})
+                res.json(feedbacks)
+              })
   }
 };
