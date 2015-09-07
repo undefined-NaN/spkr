@@ -54,16 +54,6 @@ module.exports = {
                   res.json(presentations)
                 })
   },
-
-  allPres: function(req, res, next){
-    var userid = mongoose.Types.ObjectId(req.params.userid);
-    Presentation.find({_presenter: userid})
-                .populate('feedbacks')
-                .then(function(user){
-                  res.json(user)
-                })
-  }
-
 };
 
 

@@ -6,5 +6,4 @@ module.exports = function (app) {
 
   app.post('/', presentationController.create); //create a presentation and send back unique id
   app.get('/:id', presentationController.onePres);
-  app.get('/all/:userid', presentationController.allPres);
 }; 
