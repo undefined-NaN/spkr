@@ -46,55 +46,26 @@ module.exports = {
   .fail(function (error) {
     next(error);
   });
-
-  
-  
-      
-
-
-  /* is this possible?
-    var justcreated = create(newPresentation)
-
-    
-  */
-  },
+},
   //obtain presentation data from a given date by id
   onePres: function(req, res, next){
     var presentationId = mongoose.Types.ObjectId(req.params.id);
-
-    // var findPres = Q.nbind(Presentation.findOne, Presentation);
-   Feedback.find({_presentation: presentationId}, function(err, feedbacks){
-    res.json(feedbacks);
-   })
-
-    // findPres({_id: presentationId})
-    // .then(function(presentation){
-    //   if(presentation){
-    //     return presentation.feedbacks;
-    //   }else{
-    //     res.send('error retrieving presentation info')
-    //   }
-    // })
-    // .then(function(feedbacks){
-    //   var scores = [];
-    //   for(var i=0; i<feedbacks.length; i++){
-    //     return Feedback.findAll({ _id: feedbacks[i]}, function(err, feedback){
-    //       scores.push(feedback)
-    //     })
-    //   }
-    //   return scores
-    // })
-    // .then(function(scores){
-    //   res.json(scores);
-    // })
-  
+    Presentation.findOne({_id: presentationId})
+                .populate('feedbacks')
+                .exec(function(err, presentations){
+                  if(err) console.log(err);
+                  res.json(presentations)
+                })
   },
 
   allPres: function(req, res, next){
-    
-    
+    var userid = req.params.userid;
+    Presentation.find({_presenter: userid})
+        .populate('feedbacks')
+        .then(function(user){
+          res.json(user)
+        })
   }
-
 };
 
 
