@@ -1,6 +1,6 @@
 body, html {
-	height: 80%;
-	width: 80%;
+	height: 100%;
+	width: 100%;
 	position: absolute;
 }
 h1 {
@@ -12,7 +12,13 @@ main {
 #landing {
 	width: 70%;
 	text-align: center;
-}
-#new-presentation {
 	margin: 0 auto;
+}
+#new-presentation, #login, #signup {
+	width: 25%;
+	margin: 3% auto;
+}
+
+.pitch {
+	padding-left: 1%;
 }
