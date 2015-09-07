@@ -12,11 +12,8 @@ angular.module('spkr.new-form', [])
     }, true);
 
     $scope.submit = function(presentation){
-    	
-    	//console.log('in NewFormController#submit');
-    	//console.log(Pres);
-    	
-    	Pres.createPresentation(presentation).then(function(data){
+    	Pres.createPresentation(presentation).then(function(data, err){
+        if(err) console.log(err);
     		console.log(data);
     	});
     };

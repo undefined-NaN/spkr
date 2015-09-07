@@ -1,7 +1,10 @@
 body, html {
-	height: 80%;
-	width: 80%;
+	height: 100%;
+	width: 100%;
 	position: absolute;
+}
+h1 {
+	text-align: center;
 }
 main {
 	min-height: 50%;
@@ -10,4 +13,12 @@ main {
 	width: 70%;
 	text-align: center;
 	margin: 0 auto;
+}
+#new-presentation, #login, #signup {
+	width: 25%;
+	margin: 3% auto;
+}
+
+.pitch {
+	padding-left: 1%;
 }
