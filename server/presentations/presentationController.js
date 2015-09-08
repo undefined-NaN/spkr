@@ -60,6 +60,7 @@ module.exports = {
   onePres: function(req, res, next){
     var presentationId = mongoose.Types.ObjectId(req.params.id);
     Presentation.findOne({_id: presentationId})
+                .populate('_presenter', 'username')
                 .populate('feedbacks')
                 .exec(function(err, presentations){
                   if(err) console.log(err);
