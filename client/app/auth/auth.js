@@ -8,8 +8,9 @@ angular.module('spkr.auth', [])
   $scope.login = function () {
     console.log('inside Auth.login')
     Auth.login($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.spkr', token);
+      .then(function (data) {
+        $window.localStorage.setItem('com.spkr', data.token);
+        $window.localStorage.setItem('userid', data.userid);
         $location.path('/homepage');
       })
       .catch(function (error) {
@@ -19,8 +20,9 @@ angular.module('spkr.auth', [])
 
   $scope.signup = function () {
     Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.spkr', token);
+      .then(function (data) {
+        $window.localStorage.setItem('com.spkr', data.token);
+        $window.localStorage.setItem('userid', data.userid);
         $location.path('/homepage');
       })
       .catch(function (error) {

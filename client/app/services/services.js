@@ -17,7 +17,7 @@ angular.module('spkr.services', [])
       data: user
     })
     .then(function (res) {
-      return res.data.token;
+      return res.data;
     });
   };
 
@@ -28,7 +28,7 @@ angular.module('spkr.services', [])
       data: user
     })
     .then(function (res) {
-      return res.data.token;
+      return res.data;
     });
   };
 
@@ -38,6 +38,7 @@ angular.module('spkr.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.spkr');
+    $window.localStorage.removeItem('userid')
     $location.path('/landing');
   };
 
@@ -75,6 +76,8 @@ angular.module('spkr.services', [])
 
 factory('Pres', function ($http, $location, $window) {
     var createPresentation = function(presentation) {
+      var userid = $window.localStorage.getItem('userid');
+      presentation.userid = userid;
       console.log('in Pres#createPresentation', presentation);
       return $http({
         method: 'POST',
