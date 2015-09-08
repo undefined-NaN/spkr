@@ -1,7 +1,7 @@
 <div class="container">
-    <h2>Speaker Feedback</h2>
-    <h3>Insert Presentation Here</h3>
-    <h3>Insert Date Here</h3>
+    <h2>Speaker Feedback for: {{user[0].toUpperCase() + user.slice(1)}}</h2>
+    <h3>for {{title}}</h3>
+    <h3>on {{date.slice(0,10)}}</h3>
     <form id="presentation-feedback" ng-submit="submitFeedback(presentation)" novalidate>
         <div class="form-group">
             <label for="organization">Was the presentation organized well?</label>
