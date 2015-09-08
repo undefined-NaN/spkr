@@ -42,7 +42,9 @@ rect:hover {
 #dateChart, #skillChart {
   text-align: center;
 }
-
+.table {
+	text-align: left;
+}
 header .navbar, footer .navbar {
 	margin-top: 1%;
 	padding: 1%;
