@@ -1,19 +1,26 @@
+/*  begin all pages layout */
 body, html {
 	height: 100%;
 	width: 100%;
 	position: absolute;
+	font-family: Ubuntu Helvetica Arial sans-serif;
 }
 h1, h2, h3, h4 {
 	text-align: center;
 }
+
 main {
 	min-height: 50%;
 }
+
+/* being homepage layout */
+
 #landing {
 	width: 70%;
 	text-align: center;
 	margin: 0 auto;
 }
+
 #new-presentation, #login, #signup, #presentation-feedback{
 	width: 25%;
 	margin: 3% auto;
@@ -32,4 +39,9 @@ rect:hover {
 }
 #dateChart, #skillChart {
   text-align: center;
+}
+
+header .navbar, footer .navbar {
+	margin-top: 1%;
+	padding: 1%;
 }
