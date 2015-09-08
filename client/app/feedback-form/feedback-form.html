@@ -1,44 +1,44 @@
-<div class="container" ng-controller='FeedbackController'>
+<div class="container">
     <h2>Speaker Feedback</h2>
     <h3>Insert Presentation Here</h3>
     <h3>Insert Date Here</h3>
-    <form id="presentation-feedback">
+    <form id="presentation-feedback" ng-submit="submitFeedback(presentation)" novalidate>
         <div class="form-group">
             <label for="organization">Was the presentation organized well?</label>
-            <input type="range" id="organization" min="0" max="100" step="1" ng-model='organization'>
+            <input type="range" id="organization" min="0" max="100" step="1" ng-model='presentation.organization'>
         </div>
         <div class="form-group">
             <label for="clarity">Was the message clear?</label>
-            <input type="range" id="clarity" min="0" max="100" step="1" ng-model='clarity'>
+            <input type="range" id="clarity" min="0" max="100" step="1" ng-model='presentation.clarity'>
         </div>
         <div class="form-group">
             <label for="posture">Was the speaker loud enough?</label>
-            <input type="range" id="volume" min="0" max="100" step="1" ng-model='volume'>
+            <input type="range" id="volume" min="0" max="100" step="1" ng-model='presentation.volume'>
         </div>
         <div class="form-group">
-            <labeli for="posture">Did the speaker have appropriate posture?</label>
-            <input type="range" id="posture" min="0" max="100" step="1" ng-model='posture'>
+            <label for="posture">Did the speaker have appropriate posture?</label>
+            <input type="range" id="posture" min="0" max="100" step="1" ng-model='presentation.posture'>
         </div>
         <div class="form-group">
             <label for="prepared">Did the speaker appear well prepared?</label>
-            <input type="range" id="prepared" min="0" max="100" step="1" ng-model='prepared'>
+            <input type="range" id="prepared" min="0" max="100" step="1" ng-model='presentation.prepared'>
         </div>
         <div class="form-group">
             <label for="visualAids">Were the visual aids helpful?</label>
-            <input type="range" id="visualAids" min="0" max="100" step="1" ng-model='visualAids'>
+            <input type="range" id="visualAids" min="0" max="100" step="1" ng-model='presentation.visualAids'>
         </div>
         <div class="form-group">
             <label for="connect">Did the speaker connect with the audience?</label>
-            <input type="range" id="connect" min="0" max="100" step="1" ng-model='connect'>
+            <input type="range" id="connect" min="0" max="100" step="1" ng-model='presentation.connect'>
         </div>
         <div class="form-group">
             <label for="question" class="form-group">Did the speaker answer questions appropriately?</label>
-            <input type="range" id="question" min="0" max="100" step="1" ng-model='question'>
+            <input type="range" id="question" min="0" max="100" step="1" ng-model='presentation.question'>
         </div>
         <div class="form-group">
             <label for="overall">How would you rate the overall presentation?</label>
-            <input type="range" id="overall" min="0" max="100" step="1" ng-model='overall'>
+            <input type="range" id="overall" min="0" max="100" step="1" ng-model='presentation.overall'>
         </div>
-        <button class="btn btn-primary" ng-click='submitFeedback()'>Submit</button>
+        <button class="btn btn-primary">Submit</button>
     </form>
 </div>

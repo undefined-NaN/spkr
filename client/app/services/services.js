@@ -59,10 +59,11 @@ angular.module('spkr.services', [])
 // factory for feedback form 
 
 .factory('FeedbackService', function ($http, $location, $window) {
-    var submitFeedback = function(user,presentation) {
+    var submitFeedback = function(presentation) {
+      console.log(presentation, " i am inside the factory")
       return $http({
         method: 'POST',
-        url: 'api/users/presentation/name',
+        url: 'api/feedback/',
         data: presentation
       }).then(function(res){
         return res.data;

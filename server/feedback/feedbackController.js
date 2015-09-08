@@ -10,7 +10,7 @@ var presentationId;
 module.exports = {
 
   add: function(req, res, next){
-    var presentationId = mongoose.Types.ObjectId(req.params.id),
+    var presentationId = mongoose.Types.ObjectId(req.body.presId),
         presentationExists = false,
         feedbackId,
         findPresentation = Q.nbind(Presentation.findOne, Presentation),
