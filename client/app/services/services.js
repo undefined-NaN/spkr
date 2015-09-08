@@ -73,9 +73,9 @@ angular.module('spkr.services', [])
     return {
       submitFeedback: submitFeedback
     };
-}).
+})
 
-factory('Pres', function ($http, $location, $window) {
+.factory('Pres', function ($http, $location, $window) {
     var createPresentation = function(presentation) {
       var userid = $window.localStorage.getItem('userid');
       presentation.userid = userid;
@@ -89,7 +89,17 @@ factory('Pres', function ($http, $location, $window) {
       })
     };
 
+    var getData = function(id){
+      return $http({
+        method: 'GET',
+        url: 'api/presentations/' + id,
+      }).then(function(res){
+        return res.data;
+      })
+    };
+
     return {
-      createPresentation: createPresentation
+      createPresentation: createPresentation,
+      getData: getData
     };
 })
