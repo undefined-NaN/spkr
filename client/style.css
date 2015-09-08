@@ -18,7 +18,18 @@ main {
 	width: 25%;
 	margin: 3% auto;
 }
-
 .pitch {
 	padding-left: 1%;
+}
+rect:hover {
+  opacity:.75
+}
+.axis {
+  font:12px sans-serif
+}
+.x.axis path {
+  display:none
+}
+#dateChart, #skillChart {
+  text-align: center;
 }
