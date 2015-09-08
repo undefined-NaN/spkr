@@ -11,38 +11,50 @@ module.exports = {
   create: function(req, res, next){
     var title = req.body.title,
         date  = req.body.date,
+        inDatabase = false,
         presentationid,
         _presenter = mongoose.Types.ObjectId(req.body.userid),
         findUser = Q.nbind(User.findOne, User),
         create = Q.nbind(Presentation.create, Presentation);
 
-    var newPresentation = {
-        _presenter: _presenter,
-        title: title, 
-        date: date
-        };
-
-    create(newPresentation)
-    .then(function(presentation){
-      presentationid = presentation.id;
-    })
-    .then(function(){
-      return findUser({_id:_presenter})
-    })
-    .then(function (user) {
-      if (!user) {
-        next(new Error('Cannot find user'));
-      } else {
-        return user
+    findUser({_id: _presenter})
+    .then(function(presenter){
+      if(presenter){
+        inDatabase=true;
       }
     })
-    .then(function(founduser){
-      founduser.presentations.push(presentationid)
-      founduser.save()
-      newPresentation.presentationid = presentationid
-      res.json({newPresentation: newPresentation })
-    })
+    .then(function(){
+      if(inDatabase){
+        var newPresentation = {
+            _presenter: _presenter,
+            title: title, 
+            date: date
+            };
 
+        create(newPresentation)
+        .then(function(presentation){
+          presentationid = presentation.id;
+        })
+        .then(function(){
+          return findUser({_id:_presenter})
+        })
+        .then(function (user) {
+          if (!user) {
+            next(new Error('Cannot find user'));
+          } else {
+            return user
+          }
+        })
+        .then(function(founduser){
+          founduser.presentations.push(presentationid)
+          founduser.save()
+          newPresentation.presentationid = presentationid
+          res.json({newPresentation: newPresentation })
+        })
+      }else{
+        res.json("User not found")
+      }
+    })
   },
 
   onePres: function(req, res, next){
