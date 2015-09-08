@@ -4,23 +4,34 @@ body, html {
 	width: 100%;
 	position: absolute;
 	font-family: Ubuntu Helvetica Arial sans-serif;
-	background-color: #FFFFEE;
+	/* background-color: #FFFFEE; */
 }
 h1, h2, h3, h4 {
 	text-align: center;
 }
 
+
+
 main {
 	min-height: 50%;
 }
 
-/* being homepage layout */
-
 #landing {
-	width: 70%;
 	font-size: 2em;
 	text-align: center;
 	margin: 0 auto;
+}
+
+#landing h1 {
+	color: #00FF00;
+}
+
+#landing .btn {
+	color: #00FF00;
+}
+
+.landing-heading {
+	margin-bottom: 1%;
 }
 
 #new-presentation, #login, #signup, #presentation-feedback{

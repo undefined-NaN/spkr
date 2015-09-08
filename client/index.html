@@ -9,8 +9,8 @@
   </head>
 
   <body>
-    <header class="container-fluid">
-      <nav class='navbar navbar-inverse'>
+    <header ng-controller="IndexController" class="container-fluid">
+      <nav ng-if="loggedIn" class='navbar navbar-inverse'>
         <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
           <ul class="nav navbar-nav navbar-right">
             <li><a href='/#/homepage'>Profile</a></li>
@@ -21,7 +21,7 @@
       </nav>
     </header>
 
-    <main class="container">
+    <main>
       <div ng-view>
       </div>
     </main>
@@ -40,6 +40,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js"></script>
     <script src="app/auth/auth.js"></script>
+    <script src="app/index/indexController.js"></script>
     <script src="app/feedback-form/feedbackForm.controller.js"></script>
     <script src="app/homepage/homepage.controller.js"></script>
     <script src="app/new-form/newForm.controller.js"></script>
