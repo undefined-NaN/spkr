@@ -4,6 +4,7 @@ body, html {
 	width: 100%;
 	position: absolute;
 	font-family: Ubuntu Helvetica Arial sans-serif;
+	background-color: #FFFFEE;
 }
 h1, h2, h3, h4 {
 	text-align: center;
@@ -17,6 +18,7 @@ main {
 
 #landing {
 	width: 70%;
+	font-size: 2em;
 	text-align: center;
 	margin: 0 auto;
 }
