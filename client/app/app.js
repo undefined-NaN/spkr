@@ -5,6 +5,7 @@ angular.module('spkr', [
   'spkr.new-form',
   'spkr.previous-forms',
   'spkr.services',
+  'spkr.index',
   'ngRoute' 
   ]
 ) 
