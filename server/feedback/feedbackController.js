@@ -26,15 +26,17 @@ module.exports = {
       if(presentationExists){
         var newFeedback = {
           _presentation: presentationId,
-          organization: req.body.organization,
-          clarity: req.body.clarity,
-          volume: req.body.volume,
-          posture: req.body.posture,
-          prepared: req.body.prepared,
-          visualAids: req.body.visualAids,
-          connect: req.body.connect,
-          question: req.body.question,
-          overall: req.body.overall
+          scores: [
+            req.body.organization,
+            req.body.clarity,
+            req.body.volume,
+            req.body.posture,
+            req.body.prepared,
+            req.body.visualAids,
+            req.body.connect,
+            req.body.question,
+            req.body.overall
+          ]
         }
 
         create(newFeedback)

@@ -28,7 +28,8 @@ module.exports = {
         var newPresentation = {
             _presenter: _presenter,
             title: title, 
-            date: date
+            date: date,
+            criteria: ['organization','clarity','volume','posture','preparartion','visual aids','connection','questions','overall',]
             };
 
         create(newPresentation)
