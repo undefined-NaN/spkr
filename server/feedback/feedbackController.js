@@ -49,10 +49,8 @@ module.exports = {
         .then(function(presentation){
           presentation.feedbacks.push(feedbackId)
           presentation.save()
-          res.json("Thanks for providing feedback!")
+          res.json({data: "Thanks for providing feedback!"})
         })
-      }else{
-        res.json("This presentation does not exist")
       }
     })
   }

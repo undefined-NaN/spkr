@@ -24,11 +24,11 @@ angular.module('spkr.feedback-form', ['ngRoute'])
     $scope.submitFeedback = function (presentation) {
       presentation.presId = presId;
       FeedbackService.submitFeedback(presentation) // inputs may be changed
-        .then (function () {
-          console.log('successfully sent feedback POST request')
+        .then (function (data) {
+          $scope.feedbackSuccess = data.data
         })
         .catch (function (error) {
-          console.err(error);
+          console.log(error)
         })
     },
 
