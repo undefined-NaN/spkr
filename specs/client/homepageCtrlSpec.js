@@ -1,8 +1,6 @@
-/* KARMA TEST wip */
-
 "use strict";
 
-describe('HomepageController', function () {
+describe('HomepageController', function() {
   var $scope, $rootScope, createController, Auth, $httpBackend;
 
   beforeEach(module('spkr'));
@@ -15,12 +13,12 @@ describe('HomepageController', function () {
 
     var $controller = $injector.get('$controller');
 
-    createController = function () {
+    createController = function() {
       return $controller('HomepageController', {
         $scope: $scope,
         Auth: Auth
       });
     };
   }));
-  // find out if D3 elements need to be linked to $scope
+  // find out if D3 functions need to be linked to $scope
 });
