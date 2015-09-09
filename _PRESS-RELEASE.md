@@ -15,7 +15,7 @@
 ## Solution ##
   By using SPKR, users are able to see how they did overall on a specific presentation as well as well as how they did on a specific criteria. Additionally, long-time SPKR speakers are able to see how their skills have improved over time. 
 
-## Quote from You ##
+## Quote from Production Team ##
   "Using SPKR makes you a better, more effective public speaker, period." - SDXL, Scrum Master
 
 ## How to Get Started ##
