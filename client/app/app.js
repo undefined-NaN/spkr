@@ -33,10 +33,10 @@ angular.module('spkr', [
       controller: 'AuthController'
     })
 
-    // .when('/feedback-form', {
-    //   templateUrl: 'app/feedback-form/feedback-form.html',
-    //   controller: 'FeedbackController'
-    // })
+    .when('/feedback-form', {
+      templateUrl: 'app/feedback-form/feedback-form.html',
+      controller: 'FeedbackController'
+    })
 
     .when('/feedback-form/:id', {
       templateUrl: 'app/feedback-form/feedback-form.html',
