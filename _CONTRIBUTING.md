@@ -26,7 +26,7 @@
          git mergetool
        3. If conflict can be resolved without changing other people's code
           Resolve conflict
-       4. If not, let Eric know
+       4. If not, let scrum master know
 
 4. Push feature branch to github
    git push origin feature/<name of feature>
