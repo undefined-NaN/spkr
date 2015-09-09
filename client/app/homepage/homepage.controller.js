@@ -21,17 +21,19 @@ angular.module('spkr.homepage', [])
 
         var scoresData = [];
         for (var i = 1; i < data.length; i++){
-          var sums = [];
-          for (var j = 0; j < criteria.length; j++){
-            sums.push(0);
-          }
-          data[i].feedbacks.forEach(function(feedback){
-            feedback.scores.forEach(function(score,i){
-              sums[i] += parseInt(score);
+          if (data[i].feedbacks.length > 0) {
+            var sums = [];
+            for (var j = 0; j < criteria.length; j++){
+              sums.push(0);
+            }
+            data[i].feedbacks.forEach(function(feedback){
+              feedback.scores.forEach(function(score,i){
+                sums[i] += parseInt(score);
+              });
             });
-          });
-          var avgs = sums.map(function(sum){return Math.round(sum/data[i].__v)});
-          scoresData.push({date: data[i].date.slice(0,10), title: data[i].title, scores: avgs});
+            var avgs = sums.map(function(sum){return Math.round(sum/data[i].__v)});
+            scoresData.push({date: data[i].date.slice(0,10), title: data[i].title, scores: avgs});
+          }
         }
 
         var barColor = 'steelblue';
