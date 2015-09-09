@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Signup</h1>
   <form id="signup" name="signupForm" ng-submit='signup()'>
+  <div ng-if="user.error" class="alert alert-danger" role="alert"> {{ user.error }} </div>
   	<div class="form-group">
   		<label for="username">Username: </label>
     	<input id="username" type='text' ng-model='user.username'>
