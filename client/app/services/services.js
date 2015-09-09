@@ -42,12 +42,23 @@ angular.module('spkr.services', [])
     $location.path('/landing');
   };
 
+  var getAllData = function(){
+    var userid = $window.localStorage.getItem('userid');
+    return $http({
+      method: 'GET',
+      url: 'api/users/' + userid,
+    }).then(function(res){
+      return res.data;
+    })
+  };
+
 // this is standard to return an object of these factory functions
   return {
     login: login,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
+    getAllData: getAllData
   };
 })
 
