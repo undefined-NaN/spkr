@@ -1,8 +1,8 @@
-describe('AuthController', function () {
-  var $scope, $rootScope, $location, $window, $httpBackend, createController, Auth;
+describe('AuthController', function() {
+  var $scope, $rootScope, $location, $window, $httpBackend,
+    createController, Auth;
 
-  // using angular mocks, we can inject the injector
-  // to retrieve our dependencies
+  // using angular mocks, we can inject the injector to retrieve our dependencies
   beforeEach(module('spkr'));
   beforeEach(inject(function($injector) {
 
@@ -17,7 +17,7 @@ describe('AuthController', function () {
     var $controller = $injector.get('$controller');
 
     // used to create our AuthController for testing
-    createController = function () {
+    createController = function() {
       return $controller('AuthController', {
         $scope: $scope,
         $window: $window,
@@ -44,7 +44,9 @@ describe('AuthController', function () {
     var token = 'sjj232hwjhr3urw90rof';
 
     // make a 'fake' reques to the server, not really going to our server
-    $httpBackend.expectPOST('/api/users/signup').respond({token: token});
+    $httpBackend.expectPOST('/api/users/signup').respond({
+      token: token
+    });
     $scope.signup();
     $httpBackend.flush();
     expect($window.localStorage.getItem('com.spkr')).to.be(token);
@@ -57,7 +59,9 @@ describe('AuthController', function () {
   it('should store token in localStorage after login', function() {
     // create a fake JWT for auth
     var token = 'sjj232hwjhr3urw90rof';
-    $httpBackend.expectPOST('/api/users/login').respond({token: token});
+    $httpBackend.expectPOST('/api/users/login').respond({
+      token: token
+    });
     $scope.login();
     $httpBackend.flush();
     expect($window.localStorage.getItem('com.spkr')).to.be(token);
