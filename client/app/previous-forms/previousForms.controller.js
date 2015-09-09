@@ -8,4 +8,14 @@ angular.module('spkr.previous-forms', [])
         $location.path('/landing')
       }
     }, true);
+
+    Auth.getAllData()
+    .then(function(data){
+      $scope.presentations = data.slice(1);
+    })
+    .catch(function(error){
+      console.err(error)
+    })
+
   })
+  
