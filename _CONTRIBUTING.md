@@ -1,6 +1,19 @@
 # Contributing
 
 ## Group Workflow
+-1. Clone done repo and set up environment
+    from the command line:
+
+    npm install 
+    bower install
+    mongod 
+
+    to see database contents use:
+    mongo
+    show databases
+    use spkr
+    show collections
+    db.<the collection you'd like to view>.find({})
 
 0. Make sure master is up to date
    git checkout master
