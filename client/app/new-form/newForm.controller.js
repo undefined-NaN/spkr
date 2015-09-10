@@ -14,7 +14,7 @@ angular.module('spkr.new-form', [])
     $scope.submit = function(presentation){
     	Pres.createPresentation(presentation).then(function(data, err){
         if(err) console.log(err);
-    		console.log(data);
+        $scope.feedbackUrl = "http://localhost:8000/#/feedback-form/" + data.newPresentation.presentationid;
     	});
     };
 
