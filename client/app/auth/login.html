@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>Signup</h1>
-  <form id="signup" name="signupForm" ng-submit="signup()">
+  <h1>Sign In</h1>
+  <form id="signup" name="signinForm" ng-submit="login()">
   <div ng-if="user.error" class="alert alert-danger" role="alert"> {{ user.error }} </div>
     <div class="form-group">
       <label for="username">Username: </label>
@@ -8,15 +8,15 @@
     </div>
     <div>
       <label for="password">Password: </label>
-      <input type="password" name = "password" ng-model="user.password" ng-minlength="8">
-      
-      <span class="error" ng-show="signupForm.password.$error.minlength">Minimum of 6 characters</span>
-  </div>
+      <input type="password" name = "password" ng-model="user.password">
+    </div>
+  
   <div>
-    <button class="btn btn-primary">Signup</button>
+    <button class="btn btn-primary">Sign In</button>
   </div>
-    <div>
-            <a href="#/login" class="btn btn-link">Sign In</a>
+  
+  <div>
+      <a href="#/signup" class="btn btn-link">Sign Up</a>
   </div>
   </form>
 </div>
