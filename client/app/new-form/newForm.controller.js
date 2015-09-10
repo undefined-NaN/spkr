@@ -11,6 +11,9 @@ angular.module('spkr.new-form', [])
       } 
     }, true);
 
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("date")[0].setAttribute('min', today);
+
     $scope.submit = function(presentation){
     	Pres.createPresentation(presentation).then(function(data, err){
         if(err) console.log(err);
