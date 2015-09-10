@@ -36,6 +36,16 @@ angular.module('spkr.homepage', [])
           }
         }
 
+        scoresData.sort(function(a, b) {
+          if (a.date > b.date) {
+            return 1;
+          }
+          if (a.date < b.date) {
+            return -1;
+          }
+          return 0;
+        });
+
         var barColor = 'steelblue';
         var segColor = ["red","green","orange","grey","purple","cyan","lightgreen","pink","maroon"];
 
@@ -44,16 +54,16 @@ angular.module('spkr.homepage', [])
           $('#skill').text('scores by criteria for all presentations');
 
           var DC = {};
-          var DCDim = {t: 60, r: 0, b: 30, l: 0};
+          var DCDim = {t: 15, r: 0, b: 30, l: 0};
           DCDim.w = 1000 - DCDim.l - DCDim.r;
-          DCDim.h = 250 - DCDim.t - DCDim.b;
+          DCDim.h = 200 - DCDim.t - DCDim.b;
               
           var DCsvg = d3.select('#dateChart').append("svg")
                         .attr("width", DCDim.w + DCDim.l + DCDim.r)
                         .attr("height", DCDim.h + DCDim.t + DCDim.b).append("g")
                         .attr("transform", "translate(" + DCDim.l + "," + DCDim.t + ")");
 
-          var x = d3.scale.ordinal().rangeRoundBands([0, DCDim.w], 0.1)
+          var x = d3.scale.ordinal().rangeRoundBands([0, DCDim.w], 0.1, 0)
                     .domain(data.map(function(d) { return d[0]; }));
 
           DCsvg.append("g").attr("class", "x axis")
@@ -82,7 +92,7 @@ angular.module('spkr.homepage', [])
           
           function mouseover(d){  
             SC.update(scoresData.filter(function(s){return s.date === d[0];})[0].scores.map(function(s,i){return [criteria[i],s];}));
-            $('#skill').text('scores by criteria for ' + d[0]);
+            $('#skill').text('scores by criteria for "' + d[2] + '"');
           }
           
           function mouseout(d){   
@@ -114,16 +124,16 @@ angular.module('spkr.homepage', [])
           $('#date').text('total score for each presentation');
 
           var SC = {};
-          var SCDim = {t: 60, r: 0, b: 30, l: 0};
+          var SCDim = {t: 15, r: 0, b: 30, l: 0};
           SCDim.w = 1000 - SCDim.l - SCDim.r;
-          SCDim.h = 250 - SCDim.t - SCDim.b;
+          SCDim.h = 200 - SCDim.t - SCDim.b;
               
           var DCsvg = d3.select('#skillChart').append("svg")
                         .attr("width", SCDim.w + SCDim.l + SCDim.r)
                         .attr("height", SCDim.h + SCDim.t + SCDim.b).append("g")
                         .attr("transform", "translate(" + SCDim.l + "," + SCDim.t + ")");
 
-          var x = d3.scale.ordinal().rangeRoundBands([0, SCDim.w], 0.1)
+          var x = d3.scale.ordinal().rangeRoundBands([0, SCDim.w], 0.1, 0)
                     .domain(data.map(function(d) { return d[0]; }));
 
           DCsvg.append("g").attr("class", "x axis")
@@ -151,7 +161,7 @@ angular.module('spkr.homepage', [])
               .attr("text-anchor", "middle");
           
           function mouseover(d){ 
-            DC.update(scoresData.map(function(s){return [s.date,s.scores[criteria.indexOf(d[0])]];}),segColor[criteria.indexOf(d[0])]);
+            DC.update(scoresData.map(function(s){return [s.date,s.scores[criteria.indexOf(d[0])],s.title];}),segColor[criteria.indexOf(d[0])]);
             $('#date').text(d[0] + ' score for each presentation');     
           }
           
@@ -179,7 +189,7 @@ angular.module('spkr.homepage', [])
         }
 
         var dateAverage = criteria.map(function(d,i){return [d,Math.round(d3.mean(scoresData.map(function(t){return t.scores[i];})))];});    
-        var skillsAverage = scoresData.map(function(d){return [d.date,Math.round(d3.mean(d.scores))]});
+        var skillsAverage = scoresData.map(function(d){return [d.date,Math.round(d3.mean(d.scores)),d.title]});
         var DC = dateChart(skillsAverage);
         var SC = skillChart(dateAverage);
         
