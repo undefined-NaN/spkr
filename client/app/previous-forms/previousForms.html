@@ -6,7 +6,6 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="pres in presentations">
-			{{console.log(pres)}}
 			<td><a href='{{"/#/feedback-form/"+ pres._id}}'>{{pres.title}}</a></td>
 			<td><a href='{{"/#/feedback-form/"+ pres._id}}'>{{pres.date.slice(0,10)}}</a></td>
 			<td><a href='{{"/#/feedback-form/"+ pres._id}}'>{{pres.feedbacks.length}}</a></td>
