@@ -4,7 +4,7 @@
 			<th>Title</th><th>Date</th><th>Feedback</th>
 		</thead>
 		<tbody>
-		<tr ng-repeat="pres in presentations">
+		<tr ng-repeat="pres in presentations | orderBy:'-date'">
 			<td><a href='{{"/#/history/"+ pres._id}}'>{{pres.title}}</a></td>
 			<td><a href='{{"/#/history/"+ pres._id}}'>{{pres.date.slice(0,10)}}</a></td>
 			<td><a href='{{"/#/history/"+ pres._id}}'>{{pres.feedbacks.length}}</a></td>
