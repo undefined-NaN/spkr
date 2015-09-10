@@ -3,7 +3,7 @@ angular.module('spkr.homepage', [])
 
     $scope.$watch(Auth.isAuth, function(authed){
       if (authed) {
-        $location.path('/homepage');
+        $location.path('/profile');
       } else {
         $location.path('/landing')
       } 

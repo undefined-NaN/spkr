@@ -4,6 +4,7 @@ angular.module('spkr', [
   'spkr.homepage',
   'spkr.new-form',
   'spkr.previous-forms',
+  'spkr.previous-pres',
   'spkr.services',
   'spkr.index',
   'ngRoute' 
@@ -43,17 +44,22 @@ angular.module('spkr', [
       controller: 'FeedbackController'
     })
 
-    .when('/homepage', {
+    .when('/history/:id', {
+      templateUrl: 'app/previous-pres/previousPres.html',
+      controller: 'PrevPresController'
+    })
+
+    .when('/profile', {
       templateUrl: 'app/homepage/homepage.html',
       controller: 'HomepageController'
     })
 
-    .when('/new-form', {
+    .when('/create', {
       templateUrl: 'app/new-form/newForm.html',
       controller: 'NewFormController'
     })  
 
-    .when('/previous-forms', {
+    .when('/history', {
       templateUrl: 'app/previous-forms/previousForms.html',
       controller: 'PrevFormsController'
     })
@@ -67,7 +73,7 @@ angular.module('spkr', [
 
       }
     })
-    .otherwise('/homepage')
+    .otherwise('/profile')
 
 //     // We add our $httpInterceptor into the array
 //     // of interceptors. Think of it like middleware for your ajax calls

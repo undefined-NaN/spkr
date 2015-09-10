@@ -52,28 +52,28 @@ describe('Routing', function() {
         'app/feedback-form/feedback-form.html');
     });
 
-  it('Should have /homepage route, template, and controller', function() {
-    expect($route.routes['/homepage']).to.be.ok();
-    expect($route.routes['/homepage'].controller).to.be(
+  it('Should have /profile route, template, and controller', function() {
+    expect($route.routes['/profile']).to.be.ok();
+    expect($route.routes['/profile'].controller).to.be(
       'HomepageController');
-    expect($route.routes['/homepage'].templateUrl).to.be(
+    expect($route.routes['/profile'].templateUrl).to.be(
       'app/homepage/homepage.html');
   });
 
-  it('Should have /new-form route, template, and controller', function() {
-    expect($route.routes['/new-form']).to.be.ok();
-    expect($route.routes['/new-form'].controller).to.be(
+  it('Should have /create route, template, and controller', function() {
+    expect($route.routes['/create']).to.be.ok();
+    expect($route.routes['/create'].controller).to.be(
       'NewFormController');
-    expect($route.routes['/new-form'].templateUrl).to.be(
+    expect($route.routes['/create'].templateUrl).to.be(
       'app/new-form/newForm.html');
   });
 
-  it('Should have /previous-forms route, template, and controller',
+  it('Should have /history route, template, and controller',
     function() {
-      expect($route.routes['/previous-forms']).to.be.ok();
-      expect($route.routes['/previous-forms'].controller).to.be(
+      expect($route.routes['/history']).to.be.ok();
+      expect($route.routes['/history'].controller).to.be(
         'PrevFormsController');
-      expect($route.routes['/previous-forms'].templateUrl).to.be(
+      expect($route.routes['/history'].templateUrl).to.be(
         'app/previous-forms/previousForms.html');
     });
 

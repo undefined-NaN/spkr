@@ -10,7 +10,7 @@ angular.module('spkr.auth', [])
       .then(function (data) {
         $window.localStorage.setItem('com.spkr', data.token);
         $window.localStorage.setItem('userid', data.userid);
-        $location.path('/homepage');
+        $location.path('/profile');
       })
       .catch(function (error) {
         $scope.user.error = "Username and/or password is incorrect.";
@@ -23,7 +23,7 @@ angular.module('spkr.auth', [])
       .then(function (data) {
         $window.localStorage.setItem('com.spkr', data.token);
         $window.localStorage.setItem('userid', data.userid);
-        $location.path('/homepage');
+        $location.path('/profile');
       })
       .catch(function (error) {
         $scope.user.error = "Username already exists!";

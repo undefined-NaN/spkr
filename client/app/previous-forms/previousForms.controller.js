@@ -3,7 +3,7 @@ angular.module('spkr.previous-forms', [])
 
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
-        $location.path('/previous-forms');
+        $location.path('/history');
       } else {
         $location.path('/landing')
       }
@@ -16,6 +16,6 @@ angular.module('spkr.previous-forms', [])
     .catch(function(error){
       console.err(error)
     })
-
+    
   })
   

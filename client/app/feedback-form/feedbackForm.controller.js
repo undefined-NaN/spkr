@@ -42,7 +42,7 @@ angular.module('spkr.feedback-form', ['ngRoute'])
         $scope.date  = data.date
       })
       .catch(function(error){
-        $location.path('/homepage')
+        $location.path('/profile')
       })
     }
 
