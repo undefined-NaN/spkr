@@ -9,31 +9,23 @@ body, html {
 h1, h2, h3, h4 {
 	text-align: center;
 }
-
-
-
 main {
 	min-height: 50%;
 }
-
 #landing {
 	font-size: 2em;
 	text-align: center;
 	margin: 0 auto;
 }
-
 #landing h1 {
 	color: #00FF00;
 }
-
 #landing .btn {
 	color: #00FF00;
 }
-
 .landing-heading {
 	margin-bottom: 1%;
 }
-
 #new-presentation, #login, #signup, #presentation-feedback{
 	width: 25%;
 	margin: 3% auto;
@@ -50,7 +42,7 @@ rect:hover {
 .x.axis path {
   display:none
 }
-#dateChart, #skillChart {
+#dateChart, #skillChart, #distChart {
   text-align: center;
 }
 .table {
@@ -59,4 +51,37 @@ rect:hover {
 header .navbar, footer .navbar {
 	margin-top: 1%;
 	padding: 1%;
+}
+path {
+  fill-opacity:0.8;
+  stroke-opacity:0;
+}
+.legend {
+  display:inline-block;
+  margin:10px;
+  margin-top:30px;
+  margin-left:0;
+  max-height:280px;
+  overflow:auto;
+}
+.legend table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+.legend tr, .legend td, .legend div {
+  margin:0;
+  padding:0;
+  text-align:left;
+}
+.legend div {
+  width:20px;
+  height:20px;
+  float: left;
+}
+.legend span {
+  padding: 0 5px;
+  margin:0
+}
+.legend tr:hover {
+  background:silver;
 }
