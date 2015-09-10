@@ -5,7 +5,7 @@ angular.module('spkr.new-form', [])
   
     $scope.$watch(Auth.isAuth, function(authed){
       if (authed) {
-        $location.path('/new-form');
+        $location.path('/create');
       } else {
         $location.path('/landing')
       } 
