@@ -1,6 +1,8 @@
 angular.module('spkr.feedback-form', ['ngRoute'])
-  .controller('FeedbackController', function ($scope, $location, $routeParams, FeedbackService, Pres) {
+  .controller('FeedbackController', function ($scope, $location, $routeParams, FeedbackService, Pres, Auth) {
+
     var presId = $routeParams.id;
+    $scope.loggedIn = Auth.isAuth(),
     $scope.title,
     $scope.date,
     $scope.user,

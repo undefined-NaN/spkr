@@ -40,6 +40,6 @@
             <input type="range" id="overall" min="0" max="100" step="1" ng-model='presentation.overall'>
         </div>
          <div ng-if="feedbackSuccess" class="alert alert-success" role="alert"> {{ feedbackSuccess}} </div>
-        <button class="btn btn-primary">Submit</button>
+        <button ng-hide="loggedIn" class="btn btn-primary">Submit</button>
     </form>
 </div>
