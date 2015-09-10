@@ -36,163 +36,174 @@ angular.module('spkr.homepage', [])
           }
         }
 
-        scoresData.sort(function(a, b) {
-          if (a.date > b.date) {
-            return 1;
-          }
-          if (a.date < b.date) {
-            return -1;
-          }
-          return 0;
-        });
+        if (scoresData.length === 0) {
+          $("#fallbackMessage").append(
+          "<h3>Oh no! It looks like you haven't recieved any feedback yet.</h3>" +
+          "<h3>Make sure to give out your <a href='/#/history'>feedback form URL</a> to start recieving feedback!</h3>")
+        } else {
 
-        var barColor = 'steelblue';
-        var segColor = ["red","green","orange","grey","purple","cyan","lightgreen","pink","maroon"];
+          scoresData.sort(function(a, b) {
+            if (a.date > b.date) {
+              return 1;
+            }
+            if (a.date < b.date) {
+              return -1;
+            }
+            return 0;
+          });
 
-        function dateChart(data){
+          var barColor = 'steelblue';
+          var segColor = ["red","green","orange","grey","purple","cyan","lightgreen","pink","maroon"];
 
-          $('#skill').text('scores by criteria for all presentations');
+          function dateChart(data){
 
-          var DC = {};
-          var DCDim = {t: 15, r: 0, b: 30, l: 0};
-          DCDim.w = 1000 - DCDim.l - DCDim.r;
-          DCDim.h = 200 - DCDim.t - DCDim.b;
+            $('#skill').text('scores by criteria for all presentations');
+
+            var DC = {};
+            var DCDim = {t: 15, r: 0, b: 30, l: 0};
+            DCDim.w = 1000 - DCDim.l - DCDim.r;
+            DCDim.h = 200 - DCDim.t - DCDim.b;
+                
+            var DCsvg = d3.select('#dateChart').append("svg")
+                          .attr("width", DCDim.w + DCDim.l + DCDim.r)
+                          .attr("height", DCDim.h + DCDim.t + DCDim.b).append("g")
+                          .attr("transform", "translate(" + DCDim.l + "," + DCDim.t + ")");
+
+            var x = d3.scale.ordinal().rangeRoundBands([0, DCDim.w], 0.1, 0)
+                      .domain(data.map(function(d) { return d[0]; }));
+
+            DCsvg.append("g").attr("class", "x axis")
+                 .attr("transform", "translate(0," + DCDim.h + ")")
+                 .call(d3.svg.axis().scale(x).orient("bottom"));
+
+            var y = d3.scale.linear().range([DCDim.h, 0])
+                      .domain([0, d3.max(data, function(d) { return d[1]; })]);
+
+            var bars = DCsvg.selectAll(".bar").data(data).enter()
+                            .append("g").attr("class", "bar");
+            
+            bars.append("rect")
+                .attr("x", function(d) { return x(d[0]); })
+                .attr("y", function(d) { return y(d[1]); })
+                .attr("width", x.rangeBand())
+                .attr("height", function(d) { return DCDim.h - y(d[1]); })
+                .attr('fill',barColor)
+                .on("mouseover",mouseover)
+                .on("mouseout",mouseout);
+                
+            bars.append("text").text(function(d){ return d3.format(",")(d[1])})
+                .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
+                .attr("y", function(d) { return y(d[1])-5; })
+                .attr("text-anchor", "middle");
+            
+            function mouseover(d){  
+              SC.update(scoresData.filter(function(s){return s.date === d[0];})[0].scores.map(function(s,i){return [criteria[i],s];}));
+              $('#skill').text('scores by criteria for "' + d[2] + '"');
+            }
+            
+            function mouseout(d){   
+              SC.update(dateAverage);
+              $('#skill').text('scores by criteria for all presentations');
+            }
+            
+            DC.update = function(data, color){
+
+              y.domain([0, d3.max(data, function(d) { return d[1]; })]);
+
+              var bars = DCsvg.selectAll(".bar").data(data);
               
-          var DCsvg = d3.select('#dateChart').append("svg")
-                        .attr("width", DCDim.w + DCDim.l + DCDim.r)
-                        .attr("height", DCDim.h + DCDim.t + DCDim.b).append("g")
-                        .attr("transform", "translate(" + DCDim.l + "," + DCDim.t + ")");
+              bars.select("rect").transition().duration(500)
+                  .attr("y", function(d) { return y(d[1]); })
+                  .attr("height", function(d) { return DCDim.h - y(d[1]); })
+                  .attr("fill", color);
 
-          var x = d3.scale.ordinal().rangeRoundBands([0, DCDim.w], 0.1, 0)
-                    .domain(data.map(function(d) { return d[0]; }));
+              bars.select("text").transition().duration(500)
+                  .text(function(d){ return d3.format(",")(d[1])})
+                  .attr("y", function(d) { return y(d[1])-5; });     
+            }  
 
-          DCsvg.append("g").attr("class", "x axis")
-               .attr("transform", "translate(0," + DCDim.h + ")")
-               .call(d3.svg.axis().scale(x).orient("bottom"));
+            return DC;
+          }
 
-          var y = d3.scale.linear().range([DCDim.h, 0])
+          function skillChart(data){
+
+            $('#date').text('total score for each presentation');
+
+            var SC = {};
+            var SCDim = {t: 15, r: 0, b: 30, l: 0};
+            SCDim.w = 1000 - SCDim.l - SCDim.r;
+            SCDim.h = 200 - SCDim.t - SCDim.b;
+                
+            var DCsvg = d3.select('#skillChart').append("svg")
+                          .attr("width", SCDim.w + SCDim.l + SCDim.r)
+                          .attr("height", SCDim.h + SCDim.t + SCDim.b).append("g")
+                          .attr("transform", "translate(" + SCDim.l + "," + SCDim.t + ")");
+
+            var x = d3.scale.ordinal().rangeRoundBands([0, SCDim.w], 0.1, 0)
+                      .domain(data.map(function(d) { return d[0]; }));
+
+            DCsvg.append("g").attr("class", "x axis")
+                 .attr("transform", "translate(0," + SCDim.h + ")")
+                 .call(d3.svg.axis().scale(x).orient("bottom"));
+
+            var y = d3.scale.linear().range([SCDim.h, 0])
                     .domain([0, d3.max(data, function(d) { return d[1]; })]);
 
-          var bars = DCsvg.selectAll(".bar").data(data).enter()
-                          .append("g").attr("class", "bar");
-          
-          bars.append("rect")
-              .attr("x", function(d) { return x(d[0]); })
-              .attr("y", function(d) { return y(d[1]); })
-              .attr("width", x.rangeBand())
-              .attr("height", function(d) { return DCDim.h - y(d[1]); })
-              .attr('fill',barColor)
-              .on("mouseover",mouseover)
-              .on("mouseout",mouseout);
-              
-          bars.append("text").text(function(d){ return d3.format(",")(d[1])})
-              .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
-              .attr("y", function(d) { return y(d[1])-5; })
-              .attr("text-anchor", "middle");
-          
-          function mouseover(d){  
-            SC.update(scoresData.filter(function(s){return s.date === d[0];})[0].scores.map(function(s,i){return [criteria[i],s];}));
-            $('#skill').text('scores by criteria for "' + d[2] + '"');
-          }
-          
-          function mouseout(d){   
-            SC.update(dateAverage);
-            $('#skill').text('scores by criteria for all presentations');
-          }
-          
-          DC.update = function(data, color){
-
-            y.domain([0, d3.max(data, function(d) { return d[1]; })]);
-
-            var bars = DCsvg.selectAll(".bar").data(data);
+            var bars = DCsvg.selectAll(".bar").data(data).enter()
+                    .append("g").attr("class", "bar");
             
-            bars.select("rect").transition().duration(500)
+            bars.append("rect")
+                .attr("x", function(d) { return x(d[0]); })
                 .attr("y", function(d) { return y(d[1]); })
-                .attr("height", function(d) { return DCDim.h - y(d[1]); })
-                .attr("fill", color);
+                .attr("width", x.rangeBand())
+                .attr("height", function(d) { return SCDim.h - y(d[1]); })
+                .attr("fill", function(d) { return segColor[criteria.indexOf(d[0])]; })
+                .on("mouseover",mouseover)
+                .on("mouseout",mouseout);
 
-            bars.select("text").transition().duration(500)
-                .text(function(d){ return d3.format(",")(d[1])})
-                .attr("y", function(d) { return y(d[1])-5; });     
-          }  
+            bars.append("text").text(function(d){ return d3.format(",")(d[1])})
+                .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
+                .attr("y", function(d) { return y(d[1])-5; })
+                .attr("text-anchor", "middle");
+            
+            function mouseover(d){ 
+              DC.update(scoresData.map(function(s){return [s.date,s.scores[criteria.indexOf(d[0])],s.title];}),segColor[criteria.indexOf(d[0])]);
+              $('#date').text(d[0] + ' score for each presentation');     
+            }
+            
+            function mouseout(d){   
+              DC.update(skillsAverage,barColor);
+              $('#date').text('total score for each presentation');
+            }
+            
+            SC.update = function(data){
 
-          return DC;
-        }
-
-        function skillChart(data){
-
-          $('#date').text('total score for each presentation');
-
-          var SC = {};
-          var SCDim = {t: 15, r: 0, b: 30, l: 0};
-          SCDim.w = 1000 - SCDim.l - SCDim.r;
-          SCDim.h = 200 - SCDim.t - SCDim.b;
+              y.domain([0, d3.max(data, function(d) { return d[1]; })]);
               
-          var DCsvg = d3.select('#skillChart').append("svg")
-                        .attr("width", SCDim.w + SCDim.l + SCDim.r)
-                        .attr("height", SCDim.h + SCDim.t + SCDim.b).append("g")
-                        .attr("transform", "translate(" + SCDim.l + "," + SCDim.t + ")");
+              var bars = DCsvg.selectAll(".bar").data(data);
+              
+              bars.select("rect").transition().duration(500)
+                  .attr("y", function(d) {return y(d[1]); })
+                  .attr("height", function(d) { return SCDim.h - y(d[1]); });
 
-          var x = d3.scale.ordinal().rangeRoundBands([0, SCDim.w], 0.1, 0)
-                    .domain(data.map(function(d) { return d[0]; }));
+              bars.select("text").transition().duration(500)
+                  .text(function(d){ return d3.format(",")(d[1])})
+                  .attr("y", function(d) {return y(d[1])-5; });            
+            }        
 
-          DCsvg.append("g").attr("class", "x axis")
-               .attr("transform", "translate(0," + SCDim.h + ")")
-               .call(d3.svg.axis().scale(x).orient("bottom"));
-
-          var y = d3.scale.linear().range([SCDim.h, 0])
-                  .domain([0, d3.max(data, function(d) { return d[1]; })]);
-
-          var bars = DCsvg.selectAll(".bar").data(data).enter()
-                  .append("g").attr("class", "bar");
-          
-          bars.append("rect")
-              .attr("x", function(d) { return x(d[0]); })
-              .attr("y", function(d) { return y(d[1]); })
-              .attr("width", x.rangeBand())
-              .attr("height", function(d) { return SCDim.h - y(d[1]); })
-              .attr("fill", function(d) { return segColor[criteria.indexOf(d[0])]; })
-              .on("mouseover",mouseover)
-              .on("mouseout",mouseout);
-
-          bars.append("text").text(function(d){ return d3.format(",")(d[1])})
-              .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
-              .attr("y", function(d) { return y(d[1])-5; })
-              .attr("text-anchor", "middle");
-          
-          function mouseover(d){ 
-            DC.update(scoresData.map(function(s){return [s.date,s.scores[criteria.indexOf(d[0])],s.title];}),segColor[criteria.indexOf(d[0])]);
-            $('#date').text(d[0] + ' score for each presentation');     
+            return SC;
           }
-          
-          function mouseout(d){   
-            DC.update(skillsAverage,barColor);
-            $('#date').text('total score for each presentation');
-          }
-          
-          SC.update = function(data){
 
-            y.domain([0, d3.max(data, function(d) { return d[1]; })]);
-            
-            var bars = DCsvg.selectAll(".bar").data(data);
-            
-            bars.select("rect").transition().duration(500)
-                .attr("y", function(d) {return y(d[1]); })
-                .attr("height", function(d) { return SCDim.h - y(d[1]); });
-
-            bars.select("text").transition().duration(500)
-                .text(function(d){ return d3.format(",")(d[1])})
-                .attr("y", function(d) {return y(d[1])-5; });            
-          }        
-
-          return SC;
+          var dateAverage = criteria.map(function(d,i){return [d,Math.round(d3.mean(scoresData.map(function(t){return t.scores[i];})))];});    
+          var skillsAverage = scoresData.map(function(d){return [d.date,Math.round(d3.mean(d.scores)),d.title]});
+          var DC = dateChart(skillsAverage);
+          var SC = skillChart(dateAverage);    
         }
-
-        var dateAverage = criteria.map(function(d,i){return [d,Math.round(d3.mean(scoresData.map(function(t){return t.scores[i];})))];});    
-        var skillsAverage = scoresData.map(function(d){return [d.date,Math.round(d3.mean(d.scores)),d.title]});
-        var DC = dateChart(skillsAverage);
-        var SC = skillChart(dateAverage);
-        
+      
+      } else {
+        $("#fallbackMessage").append(
+          "<h3>Oh no! It looks like you haven't made any presentations yet.</h3>" +
+          "<h3><a href='/#/create'>Create</a> your first presentation to start recieving feedback!</h3>")
       }
     })
 

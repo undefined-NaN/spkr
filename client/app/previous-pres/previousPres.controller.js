@@ -14,7 +14,6 @@ angular.module('spkr.previous-pres', ['ngRoute'])
       $scope.title = data.title;
       $scope.date  = data.date.slice(0,10);
       $scope.feedbacks = data.feedbacks.length;
-      $scope.feedbackUrl = "http://localhost:8000/#/feedback-form/" + $routeParams.id;
       if ($scope.feedbacks > 0) {
 
         $('#distChart').append(
