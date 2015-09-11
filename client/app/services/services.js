@@ -61,12 +61,6 @@ angular.module('spkr.services', [])
     getAllData: getAllData
   };
 })
-
-
-
-
-
-
 // factory for feedback form 
 
 .factory('FeedbackService', function ($http, $location, $window) {

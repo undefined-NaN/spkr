@@ -46,7 +46,7 @@ angular.module('spkr.feedback-form', ['ngRoute'])
         $scope.expiration = data.expiration.slice(0,10);
       })
       .catch(function(error){
-        $location.path('/profile')
+        $location.path('/data-profile')
       })
     }
 

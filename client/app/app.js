@@ -44,17 +44,17 @@ angular.module('spkr', [
       controller: 'PrevPresController'
     })
 
-    .when('/profile', {
+    .when('/data-profile', {
       templateUrl: 'app/homepage/homepage.html',
       controller: 'HomepageController'
     })
 
-    .when('/create', {
+    .when('/presentations/new', {
       templateUrl: 'app/new-form/newForm.html',
       controller: 'NewFormController'
     })  
 
-    .when('/history', {
+    .when('/presentations/history', {
       templateUrl: 'app/previous-forms/previousForms.html',
       controller: 'PrevFormsController'
     })
