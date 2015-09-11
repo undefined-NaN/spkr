@@ -68,6 +68,6 @@ angular.module('spkr', [
 
       }
     })
-    .otherwise('/profile')
+    .otherwise('/')
     
 });
