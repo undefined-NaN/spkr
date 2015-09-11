@@ -34,12 +34,12 @@ angular.module('spkr', [
       controller: 'FeedbackController'
     })
 
-    .when('/feedback-form/:id', {
+    .when('/feedback-form/:presentation_id', {
       templateUrl: 'app/feedback-form/feedback-form.html',
       controller: 'FeedbackController'
     })
 
-    .when('/history/:id', {
+    .when('/presentations/history/:presentation_id', {
       templateUrl: 'app/previous-pres/previousPres.html',
       controller: 'PrevPresController'
     })
