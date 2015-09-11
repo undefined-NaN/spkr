@@ -3,11 +3,16 @@ angular.module('spkr.homepage', [])
 
     $scope.$watch(Auth.isAuth, function(authed){
       if (authed) {
-        $location.path('/profile');
+        $location.path('/data-profile');
       } else {
-        $location.path('/landing')
+        $location.path('/')
       } 
     }, true);
+
+    $scope.$on('$viewContentLoaded', function(){
+      //view loaded do some stuff.
+      $location.replace(); //clear last history route
+    });
 
     Auth.getAllData()
 
@@ -203,7 +208,7 @@ angular.module('spkr.homepage', [])
       } else {
         $("#fallbackMessage").append(
           "<h3>Oh no! It looks like you haven't made any presentations yet.</h3>" +
-          "<h3><a href='/#/create'>Create</a> your first presentation to start recieving feedback!</h3>")
+          "<h3><a href='/#/presentations/new'>Create</a> your first presentation to start recieving feedback!</h3>")
       }
     })
 

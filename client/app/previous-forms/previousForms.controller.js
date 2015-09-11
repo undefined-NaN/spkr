@@ -3,19 +3,19 @@ angular.module('spkr.previous-forms', [])
 
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
-        $location.path('/history');
+        $location.path('/presentations/history');
       } else {
-        $location.path('/landing')
+        $location.path('/')
       }
     }, true);
 
     Auth.getAllData()
-    .then(function(data){
-      $scope.presentations = data.slice(1);
-    })
-    .catch(function(error){
-      console.err(error)
-    })
+      .then(function(data){
+        $scope.presentations = data.slice(1);
+      })
+      .catch(function(error){
+        console.err(error)
+      })
     
   })
   
