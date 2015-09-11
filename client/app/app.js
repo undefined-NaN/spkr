@@ -19,11 +19,6 @@ angular.module('spkr', [
       controller: 'AuthController'
     })
 
-    .when('/landing', {
-      templateUrl: 'app/auth/landing.html',
-      controller: 'AuthController'
-    })
-
     .when('/login', {
       templateUrl: 'app/auth/login.html',
       controller: 'AuthController'
