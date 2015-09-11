@@ -39,7 +39,7 @@ angular.module('spkr.services', [])
   var signout = function () {
     $window.localStorage.removeItem('com.spkr');
     $window.localStorage.removeItem('userid')
-    $location.path('/landing');
+    $location.path('/');
   };
 
   var getAllData = function(){
