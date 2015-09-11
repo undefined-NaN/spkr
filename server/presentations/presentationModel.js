@@ -14,6 +14,10 @@ var PresentationSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  expiration: {
+    type: Date,
+    required: true
+  },
   criteria: {
     type: Array,
     required: true

@@ -12,6 +12,10 @@
 				<label for="date">Date: </label>
 				<input name="date" id="date" type="date"  ng-model="presentation.date"/>
 			</div>
+			<div class="form-group">
+				<label for="date">Expiration: </label>
+				<input name="expiration" id="expiration" type="date"  ng-model="presentation.expiration"/>
+			</div>
 			<input type="submit" class="btn btn-primary" value="Create"/>
 			<div ng-if="feedbackUrl" class="alert alert-success" role="alert">
 			Your unique url is: <a href= {{feedbackUrl}}> {{feedbackUrl}}</a>

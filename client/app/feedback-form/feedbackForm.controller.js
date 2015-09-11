@@ -5,6 +5,8 @@ angular.module('spkr.feedback-form', ['ngRoute'])
     $scope.loggedIn = Auth.isAuth(),
     $scope.title,
     $scope.date,
+    $scope.expiration,
+    $scope.today,
     $scope.user,
 
     $scope.presentation= {
@@ -39,7 +41,9 @@ angular.module('spkr.feedback-form', ['ngRoute'])
       .then(function(data){
         $scope.user = data._presenter.username;
         $scope.title = data.title;
-        $scope.date  = data.date
+        $scope.date  = data.date.slice(0,10);
+        $scope.today = new Date().toISOString().split('T')[0];
+        $scope.expiration = data.expiration.slice(0,10);
       })
       .catch(function(error){
         $location.path('/profile')
