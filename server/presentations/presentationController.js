@@ -11,6 +11,7 @@ module.exports = {
   create: function(req, res, next){
     var title = req.body.title,
         date  = req.body.date,
+        expiration = req.body.expiration,
         inDatabase = false,
         presentationid,
         _presenter = mongoose.Types.ObjectId(req.body.userid),
@@ -29,6 +30,7 @@ module.exports = {
             _presenter: _presenter,
             title: title, 
             date: date,
+            expiration: expiration,
             criteria: ['organization','clarity','volume','posture','preparartion','visual aids','connection','questions','overall',]
             };
 

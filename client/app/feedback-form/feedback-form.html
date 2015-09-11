@@ -1,7 +1,8 @@
 <div class="container">
   <h2>Speaker Feedback for: {{user[0].toUpperCase() + user.slice(1)}}</h2>
   <h3>Presentation: {{title}}</h3>
-  <h3>on {{date.slice(0,10)}}</h3>
+  <h3>on {{date}}</h3>
+  <h4 ng-show="expiration < today" class="alert alert-danger">This form has expired.</h4>
 
   <hr/>
 
@@ -82,7 +83,7 @@
 
     <div ng-if="feedbackSuccess" class="alert alert-success" role="alert"> {{ feedbackSuccess}} </div>
     
-    <button id="feedbackButton" ng-hide="loggedIn" class="btn btn-primary">Submit Feedback</button>
+    <button id="feedbackButton" ng-hide="loggedIn || expiration < today" class="btn btn-primary">Submit Feedback</button>
     
     </form>
 
