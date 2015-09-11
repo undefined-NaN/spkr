@@ -4,6 +4,12 @@ angular.module('spkr.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
+ 
+  $scope.$watch(Auth.isAuth, function(authed){
+      if (authed) {
+        $location.path('/data-profile');
+      }
+  }, true);
 
   $scope.login = function () {
     Auth.login($scope.user)
