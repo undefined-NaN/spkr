@@ -39,7 +39,7 @@ angular.module('spkr', [
       controller: 'FeedbackController'
     })
 
-    .when('/history/:id', {
+    .when('/presentations/history/:id', {
       templateUrl: 'app/previous-pres/previousPres.html',
       controller: 'PrevPresController'
     })
@@ -68,6 +68,6 @@ angular.module('spkr', [
 
       }
     })
-    .otherwise('/profile')
+    .otherwise('/')
     
 });

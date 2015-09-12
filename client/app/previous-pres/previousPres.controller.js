@@ -135,7 +135,7 @@ angular.module('spkr.previous-pres', ['ngRoute'])
       }
     })
     .catch(function(error){
-      $location.path('/profile')
+      $location.path('/data-profile')
     })
 
   });
