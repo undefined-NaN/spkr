@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
-  <body>
-    <header ng-controller="IndexController" class="container-fluid">
+  <body ng-controller="IndexController" ng-class="">
+    <header  class="container-fluid">
       <nav ng-if="loggedIn" class='navbar navbar-inverse'>
         <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
           <ul class="nav navbar-nav navbar-right">
@@ -27,15 +27,6 @@
       </div>
     </main>
 
-    <footer class="container-fluid">
-      <nav ng-if="loggedIn" class='navbar navbar-inverse'>
-        <a target="_blank" href="/#/" class="navbar-brand">SPKR</a>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a target="_blank" href="https://github.com/glorypod">glory-pod.io</a>
-          </ul>
-      </nav>
-    </footer>
-    
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>

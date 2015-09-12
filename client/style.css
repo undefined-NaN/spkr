@@ -11,22 +11,29 @@ h1, h2, h3, h4 {
 main {
 	min-height: 50%;
 }
-/********** BUTTON STYLES ***********/
-.btn-link, .btn-link:hover {
-  color: #d43f3a;;
+/********** BUTTON & LINK STYLES ***********/
+.btn-link, .btn-link:hover, button.btn-danger .btn-link:hover, td a {
+  color: #DE7B59;
 }
 
 /********** LANDING PAGE **********/
+
+body {
+  background-image: url('app/assets/6475901681_488cd406f3_b.jpg');
+  background-size: cover;
+}
+
 #landing {
 	font-size: 2em;
 	text-align: center;
 	margin: 0 auto;
 }
-#landing h1 {
+#landing h1, .landing-heading {
 	color: #ffffff;
 }
 
 .landing-heading {
+  text-transform: lowercase;
 	margin-bottom: 1%;
 }
 
