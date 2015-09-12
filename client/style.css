@@ -4,7 +4,6 @@ body, html {
 	width: 100%;
 	position: absolute;
 	font-family: Ubuntu Helvetica Arial sans-serif;
-	/* background-color: #FFFFEE; */
 }
 h1, h2, h3, h4 {
 	text-align: center;
@@ -12,6 +11,12 @@ h1, h2, h3, h4 {
 main {
 	min-height: 50%;
 }
+/********** BUTTON STYLES ***********/
+.btn-link, .btn-link:hover {
+  color: #d43f3a;;
+}
+
+/********** LANDING PAGE **********/
 #landing {
 	font-size: 2em;
 	text-align: center;
@@ -24,6 +29,10 @@ main {
 .landing-heading {
 	margin-bottom: 1%;
 }
+
+/*********** DATA-PROFILE **********/
+
+
 #new-presentation, #login, #signup {
 	width: 25%;
 	margin: 3% auto;
@@ -32,6 +41,8 @@ main {
 .pitch {
 	padding-left: 1%;
 }
+
+/********** D3 STYLES **********/
 rect:hover {
   opacity:.75
 }
@@ -258,7 +269,7 @@ label {
 body {
   padding-top: 20px;
 }
-.container {
+.landing-container {
   width: 406px;
   max-width: 406px;
   margin: 0 auto;
