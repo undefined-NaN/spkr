@@ -1,22 +1,27 @@
 <div class="container">
-  <h1>Sign In</h1>
-  <form id="signup" name="signinForm" ng-submit="login()">
-  <div ng-if="user.error" class="alert alert-danger" role="alert"> {{ user.error }} </div>
-    <div class="form-group">
-      <label for="username">Username: </label>
-      <input id="username" type="text" ng-model="user.username">
-    </div>
-    <div>
-      <label for="password">Password: </label>
-      <input type="password" name = "password" ng-model="user.password">
-    </div>
+  <style> body { background-image: url('https://untapt.imgix.net/wp-content/uploads/2014/09/conference-table-593355_1280.jpg?w=1200&h=1100&blur=10&exp=-10') }
+  </style>
   
-  <div>
-    <button class="btn btn-primary">Sign In</button>
-  </div>
-  
-  <div>
+  <form id="login" class="forms" name="loginForm" ng-submit="login()">
+    <div ng-if="user.error" class="alert alert-danger" role="alert"> {{ user.error }} </div>
+    <div class="header"> 
+      <h1>Login</h1>
+      <p>Welcome back!</p>
+      <div class="sep"></div>
+    </div>
+    
+    <div class="inputs">
+      <div class="form-group">
+        <label for="username">Username: </label>
+        <input id="username" name="username" class="form-control" type="text" ng-model="user.username">
+      </div>
+        <label for="password">Password: </label>
+        <input type="password" name="password" class="form-control" id="password" ng-model="user.password">
+      </div>
+
+    <div class="form-actions">
+      <button class="btn btn-primary">Sign In</button>
       <a href="#/signup" class="btn btn-link">Sign Up</a>
-  </div>
+    </div>
   </form>
 </div>
