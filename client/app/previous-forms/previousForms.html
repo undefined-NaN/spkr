@@ -5,9 +5,9 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="pres in presentations | orderBy:'-date'">
-			<td><a href='{{"/#/history/"+ pres._id}}'>{{pres.title}}</a></td>
-			<td><a href='{{"/#/history/"+ pres._id}}'>{{pres.date.slice(0,10)}}</a></td>
-			<td><a href='{{"/#/history/"+ pres._id}}'>{{pres.feedbacks.length}}</a></td>
+			<td><a href='{{"/#/presentations/history/"+ pres._id}}'>{{pres.title}}</a></td>
+			<td><a href='{{"/#/presentations/history/"+ pres._id}}'>{{pres.date.slice(0,10)}}</a></td>
+			<td><a href='{{"/#/presentations/history/"+ pres._id}}'>{{pres.feedbacks.length}}</a></td>
 			<td><a href='{{"/#/feedback-form/"+ pres._id}}'>{{"http://localhost:8000/#/feedback-form/"+ pres._id}}</a></td>
 		</tr>
 		</tbody>

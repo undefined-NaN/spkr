@@ -3,7 +3,7 @@ angular.module('spkr.previous-pres', ['ngRoute'])
 
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
-        $location.path('/presentations/history/:id'+$routeParams.id);
+        $location.path('/presentations/history/'+$routeParams.id);
       } else {
         $location.path('/')
       }
@@ -135,7 +135,7 @@ angular.module('spkr.previous-pres', ['ngRoute'])
       }
     })
     .catch(function(error){
-      $location.path('/profile')
+      $location.path('/data-profile')
     })
 
   });
