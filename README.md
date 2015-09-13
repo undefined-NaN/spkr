@@ -11,6 +11,8 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
+    1. [Viewing the project](#viewing-the-project)
+    1. [Running tests](#running-tests)
 1. [Roadmap](#roadmap)
 1. [Contributing](#contributing)
 
@@ -42,6 +44,33 @@ sudo npm install -g bower
 npm install
 bower install
 ```
+
+### Viewing the project
+
+From the command line:
+mongod
+
+In a separate terminal tab/window:
+nodemon index.js
+
+In the browser:
+Navigate to : 
+localhost:8000
+
+(To view the database, in another terminal tab/window, type:
+mongo)
+
+### Running tests
+Following all steps in "Viewing the project" then:
+
+Front-end tests: 
+(from the project root directory in a separate tab on the command line)
+gulp karma
+
+Back-end tests:
+(from the project root directory in a separate tab on the command line)
+gulp mocha OR npm test
+
 ### Roadmap
 
 View the project roadmap [here](https://github.com/glorypod/spkr/issues)
