@@ -31,8 +31,10 @@ gulp.task('start', ['serve'],function () {
 });
 
 gulp.task('karma', shell.task([
-  'karma start'
+  'karma start',
 ]));
+
+gulp.task('mocha', shell.task(['npm test']))
 
 // start our node server using nodemon
 gulp.task('serve', function() {
