@@ -1,6 +1,5 @@
 angular.module('spkr.previous-pres', ['ngRoute'])
   .controller('PrevPresController', function ($scope, $location, $routeParams, Pres, Auth) {
-
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
         $location.path('/presentations/history/'+$routeParams.id);

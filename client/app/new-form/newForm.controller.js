@@ -2,7 +2,6 @@
 angular.module('spkr.new-form', [])
   .controller('NewFormController', function ($scope, $location, $window, Auth, 
   	Pres) {
-  
     $scope.$watch(Auth.isAuth, function(authed){
       if (authed) {
         $location.path('/presentations/new');

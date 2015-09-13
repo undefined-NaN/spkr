@@ -7,6 +7,7 @@ angular.module('spkr', [
   'spkr.previous-pres',
   'spkr.services',
   'spkr.index',
+  'spkr.background',
   'ngRoute' 
   ]
 ) 

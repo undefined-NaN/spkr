@@ -5,20 +5,43 @@ body, html {
 	position: absolute;
 	font-family: Ubuntu Helvetica Arial sans-serif;
 }
+
 h1, h2, h3, h4 {
 	text-align: center;
 }
+header .navbar, footer .navbar {
+  margin-top: 0.25%;
+  padding: 0.5% 1.5%;
+}
+
+.navbar {
+  background-color: grey;
+}
+.navbar a {
+  color: white;
+}
+
+.navbar-right li {
+  border-width: 1px;
+  border-color: white;
+}
+
+.navbar a:hover {
+  color: grey;
+  background-color: white;
+}
+
 main {
-	min-height: 50%;
+	min-height: 60%;
 }
 /********** BUTTON & LINK STYLES ***********/
-.btn-link, .btn-link:hover, button.btn-danger .btn-link:hover, td a {
+.btn-link, .btn-link:hover, button.btn-danger .btn-link:hover {
   color: #DE7B59;
 }
 
 /********** LANDING PAGE **********/
 
-body {
+body.landing {
   background-image: url('app/assets/6475901681_488cd406f3_b.jpg');
   background-size: cover;
 }
@@ -30,6 +53,10 @@ body {
 }
 #landing h1, .landing-heading {
 	color: #ffffff;
+}
+
+#landing button {
+  text-transform: uppercase;
 }
 
 .landing-heading {
@@ -65,10 +92,7 @@ rect:hover {
 .table {
 	text-align: left;
 }
-header .navbar, footer .navbar {
-	margin-top: 1%;
-	padding: 1%;
-}
+
 path {
   fill-opacity:0.8;
   stroke-opacity:0;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='spkr'>
+<html ng-app='spkr' ng-controller="BackgroundController">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,30 +8,28 @@
     <link rel="stylesheet" type="text/css" href="lib/Bootflat/bootflat/css/bootflat.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-
-  <body ng-controller="IndexController" ng-class="">
-    <header  class="container-fluid">
-      <nav ng-if="loggedIn" class='navbar navbar-inverse'>
-        <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href='/#/data-profile'>Data Profile</a></li>
-            <li><a href='/#/presentations/new'>Create</a></li>
-            <li><a href='/#/presentations/history'>History</a></li>
-            <li><a href='/#/logout'><small>Logout</small></a></li>
-          </ul>
+  <body ng-class="{landing: withBackground}">
+    <header  class="container-fluid" ng-controller="IndexController">
+      <nav ng-if="loggedIn" class='navbar'>
+        <a href="/#/data-profile" class="navbar-brand">SPKR</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href='/#/data-profile'>Data Profile</a></li>
+          <li><a href='/#/presentations/new'>Create</a></li>
+          <li><a href='/#/presentations/history'>History</a></li>
+          <li><a href='/#/logout'><small>Logout</small></a></li>
+        </ul>
       </nav>
     </header>
-
     <main>
       <div ng-view>
       </div>
     </main>
-
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="app/auth/auth.js"></script>
+    <script src="app/index/backgroundController.js"></script>
     <script src="app/index/indexController.js"></script>
     <script src="app/feedback-form/feedbackForm.controller.js"></script>
     <script src="app/homepage/homepage.controller.js"></script>
