@@ -1,90 +1,101 @@
 <div class="container">
-  <h2>Speaker Feedback for: {{user[0].toUpperCase() + user.slice(1)}}</h2>
-  <h3>Presentation: {{title}}</h3>
-  <h3>on {{date}}</h3>
-  <h4 ng-show="expiration < today" class="alert alert-danger">This form has expired.</h4>
-
-  <hr/>
-
-  <form id="presentation-feedback" ng-submit="submitFeedback(presentation)" novalidate>
-
-    <div class="row">
-      <div class="col-xs-8">
-          <label for="organization">Was the presentation organized well?</label>
-        <div class="range range-success">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="organization.value=value" ng-model="presentation.organization">
-          <output id="organization">50</output>
-        </div>
+  <h1>Feedback Form</h1>
+  <div class="row form-meta">
+    <div class="col-md-4">
+      <h2>Username</h2>
+        <div class="data">{{user[0].toUpperCase() + user.slice(1)}}</div> 
       </div>
-
-      <div class="col-xs-8">
-        <label for="clarity">Was the message clear?</label>
-        <div class="range range-info">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="clarity.value=value" ng-model="presentation.clarity">
-          <output id="clarity">50</output>
-        </div>
+      <div class="col-md-4">
+        <h2>Presentation Title</h2>
+        <div class="data">{{title}}</div>
       </div>
-
-      <div class="col-xs-8">
-        <label for="posture">Was the speaker loud enough?</label>
-        <div class="range range-success">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="volume.value=value" ng-model="presentation.volume">
-          <output id="volume">50</output>
-        </div>
-      </div>
-      <div class="col-xs-8">
-        <label for="posture">Did the speaker have appropriate posture?</label>
-        <div class="range range-info">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="posture.value=value" ng-model="presentation.posture">
-          <output id="posture">50</output>
-        </div>
-      </div>
- 
-      <div class="col-xs-8">
-        <label for="prepared">Did the speaker appear well prepared?</label>
-        <div class="range range-success">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="prepared.value=value" ng-model="presentation.prepared">
-          <output id="prepared">50</output>
-        </div>
-      </div>
-      <div class="col-xs-8">
-        <label for="visualAids">Were the visual aids helpful?</label>
-        <div class="range range-info">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="visualAids.value=value" ng-model="presentation.visualAids">
-          <output id="visualAids">50</output>
-        </div>
-      </div>
-
-      <div class="col-xs-8">
-        <label for="connect">Did the speaker connect with the audience?</label>
-        <div class="range range-success">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="connect.value=value" ng-model="presentation.connect">
-          <output id="connect">50</output>
-        </div>
-      </div>
-      <div class="col-xs-8">
-        <label for="question">Did the speaker answer questions appropriately?</label>
-        <div class="range range-info">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="question.value=value" ng-model="presentation.question">
-          <output id="question">50</output>
-        </div>
-      </div>
-   
-      <div class="col-xs-8">
-        <label for="overall">How would you rate the overall presentation?</label>
-        <div class="range range-success">
-          <input type="range" name="range" min="1" max="100" value="50" onchange="overall.value=value" ng-model="presentation.overall">
-          <output id="overall">50</output>
-        </div>
+      <div class="col-md-4">
+        <h2>Date</h2>
+        <div class="data">{{date | date : "mediumDate" }}</div>
       </div>
     </div>
-    
-    <hr>
-
-    <div ng-if="feedbackSuccess" class="alert alert-success" role="alert"> {{ feedbackSuccess}} </div>
-    
-    <button id="feedbackButton" ng-hide="loggedIn || expiration < today" class="btn btn-primary">Submit Feedback</button>
-    
-    </form>
-
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p ng-show="expiration < today" class="alert alert-danger">This form has expired.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form id="presentation-feedback" ng-submit="submitFeedback(presentation)" novalidate>
+        <div class="row">
+          <div class="col-xs-8">
+            <label for="organization">Was the presentation organized well?</label>
+            <div class="range range-success">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="organization.value=value" ng-model="presentation.organization">
+              <output id="organization">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="clarity">Was the message clear?</label>
+            <div class="range range-info">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="clarity.value=value" ng-model="presentation.clarity">
+              <output id="clarity">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="posture">Was the speaker loud enough?</label>
+            <div class="range range-success">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="volume.value=value" ng-model="presentation.volume">
+              <output id="volume">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="posture">Did the speaker have appropriate posture?</label>
+            <div class="range range-info">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="posture.value=value" ng-model="presentation.posture">
+              <output id="posture">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="prepared">Did the speaker appear well prepared?</label>
+            <div class="range range-success">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="prepared.value=value" ng-model="presentation.prepared">
+              <output id="prepared">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="visualAids">Were the visual aids helpful?</label>
+            <div class="range range-info">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="visualAids.value=value" ng-model="presentation.visualAids">
+              <output id="visualAids">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="connect">Did the speaker connect with the audience?</label>
+            <div class="range range-success">
+            <input type="range" name="range" min="1" max="100" value="50" onchange="connect.value=value" ng-model="presentation.connect">
+            <output id="connect">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="question">Did the speaker answer questions appropriately?</label>
+            <div class="range range-info">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="question.value=value" ng-model="presentation.question">
+              <output id="question">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="overall">How would you rate the overall presentation?</label>
+            <div class="range range-success">
+              <input type="range" name="range" min="1" max="100" value="50" onchange="overall.value=value" ng-model="presentation.overall">
+              <output id="overall">50</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <button id="feedbackButton" ng-hide="loggedIn || expiration < today" class="btn btn-primary">Submit Feedback</button>
+          </div>
+          <div class="col-xs-8">
+            <div ng-if="feedbackSuccess" class="alert alert-success" role="alert"> {{ feedbackSuccess}} 
+            </div>
+          </div>
+        </div><!--row !-->
+      </form>
+    </div><!-- col-md -->
+  </div><!-- row -->
 </div>

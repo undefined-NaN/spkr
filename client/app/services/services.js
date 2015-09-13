@@ -1,6 +1,6 @@
 angular.module('spkr.services', [])
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $rootScope, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
   // by exchanging the user's username and password
@@ -38,7 +38,8 @@ angular.module('spkr.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.spkr');
-    $window.localStorage.removeItem('userid')
+    $window.localStorage.removeItem('userid');
+    $rootScope.withBackground = true;
     $location.path('/');
   };
 

@@ -4,34 +4,127 @@ body, html {
 	width: 100%;
 	position: absolute;
 	font-family: Ubuntu Helvetica Arial sans-serif;
-	/* background-color: #FFFFEE; */
 }
+
 h1, h2, h3, h4 {
 	text-align: center;
+  color: #555;
 }
+header .navbar, footer .navbar {
+  margin-top: 0.5%;
+  padding: 0.5% 1.5%;
+}
+
 main {
-	min-height: 50%;
+	min-height: 60%;
 }
+/********** BUTTON & LINK STYLES ***********/
+.btn-link, .btn-link:hover, button.btn-danger .btn-link:hover {
+  color: #DE7B59;
+}
+.navbar {
+  background-color: grey;
+}
+.navbar a, .navbar-brand {
+  color: white;
+}
+
+.navbar a:focus, .navbar-brand:focus {
+  color: grey;
+  background-color: white;
+  font-weight: bold;
+}
+.navbar a:hover, navbar-brand:hover{
+  color: grey;
+  background-color: white;
+}
+
+
+/********** LANDING PAGE **********/
+
+body.landing {
+  background-image: url('app/assets/6475901681_488cd406f3_b.jpg');
+  background-size: cover;
+}
+
 #landing {
 	font-size: 2em;
 	text-align: center;
 	margin: 0 auto;
 }
-#landing h1 {
-	color: #ffffff;
+
+#landing h1, #signup h1, #login h1 {
+  border: none;
+}
+#landing h1, .landing-heading {
+  color: #ffffff;
+}
+
+#signup, #login {
+  margin-top: 20%;
+  padding: 10%;
+}
+
+#landing button {
+  text-transform: uppercase;
 }
 
 .landing-heading {
+  text-transform: lowercase;
 	margin-bottom: 1%;
 }
-#new-presentation, #login, #signup {
-	width: 25%;
-	margin: 3% auto;
+
+/*********** DATA-PROFILE **********/
+
+h1 {
+  border-bottom: 2px solid #d6e9c6;
+  margin: 0 25%;
+  padding-bottom: 1%;
 }
 
-.pitch {
-	padding-left: 1%;
+.data-profile h2, .data-profile h3, .data-profile h2, .data-profile h3, .data-profile h4 {
+  text-transform: capitalize;
 }
+.user-greeting {
+  color: #337ab7
+}
+
+#fallbackMessage {
+  width: 30%;
+  text-align: justify;
+  margin: 0 auto;
+  font-size: 1.5em;
+  margin-top: 5%;
+  line-height: 200%;
+}
+#fallbackMessage h2 {
+  margin-bottom: 5%;
+  color: #337ab7;
+  font-style: italic;
+}
+
+#fallbackMessage p {
+  width: 60%;
+  margin: 1% auto;
+}
+
+/************ Presentations ***********/
+.presentations-inner-wrapper {
+  margin-top: 5%;
+}
+
+.presentations h1 {
+  margin-bottom: 1%;
+}
+#new-presentation{
+	width: 25%;
+	margin: 0 auto 5% auto;
+}
+.new-presentation-url {
+  text-align: center;
+}
+
+/********** D3 STYLES **********/
 rect:hover {
   opacity:.75
 }
@@ -47,10 +140,7 @@ rect:hover {
 .table {
 	text-align: left;
 }
-header .navbar, footer .navbar {
-	margin-top: 1%;
-	padding: 1%;
-}
+
 path {
   fill-opacity:0.8;
   stroke-opacity:0;
@@ -90,7 +180,38 @@ path {
 #spkr{
   font-size: 5em;
 }
-/*FEEDBACK FORM */
+/********** FEEDBACK FORM ***********/
+
+.form-meta, .previous-presentation {
+  margin: 2.5% auto;
+  width: 80%;
+}
+
+.form-meta h2, .previous-presentation h2 {
+  font-size: 2.0em;
+  font-style: italic;
+  color: rgb(61, 159, 188);
+}
+
+.form-meta .data, .previous-presentation .data {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+#presentation-feedback{
+  width: 80%;
+  padding-left: 25%;
+  margin: 0 auto 5% auto;
+}
+
+#presentation-feedback .alert-success {
+  margin: 2% 0;
+}
+
+#feedbackButton {
+  margin-top: 5%;
+  width: 100%;
+}
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
@@ -245,20 +366,10 @@ path {
 label {
   margin-top: 25px;
 }
-#presentation-feedback{
-  margin-left: 80px;
-}
-#feedbackButton {
-  float: right;
-}
 
 
 /*SIGNUP FORM*/
-
-body {
-  padding-top: 20px;
-}
-.container {
+.landing-container {
   width: 406px;
   max-width: 406px;
   margin: 0 auto;

@@ -1,51 +1,42 @@
 <!DOCTYPE html>
-<html ng-app='spkr'>
+<html ng-app='spkr' ng-controller="BackgroundController">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SPKR</title>
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="lib/Bootflat/bootflat/css/bootflat.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-
-  <body>
-    <header ng-controller="IndexController" class="container-fluid">
-      <nav ng-if="loggedIn" class='navbar navbar-inverse'>
-        <a href="/#/" class="navbar-brand">Welcome to SPKR</a>
+  <body ng-class="{landing: withBackground}">
+    <header  class="container-fluid" ng-controller="IndexController">
+      <nav ng-if="loggedIn" class='navbar'>
+        <div class="navbar-header">
+          <a href="/#/data-profile" class="navbar-brand">spkr</a>
+        </div>
+        <div class="collapse navbar-collapse" collapse="isCollapsed">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href='/#/data-profile'>Data Profile</a></li>
-            <li><a href='/#/presentations/new'>Create</a></li>
-            <li><a href='/#/presentations/history'>History</a></li>
+            <li><a focus href='/#/data-profile'>Data Profile</a></li>
+            <li><a href='/#/presentations'>Presentations</a></li>
             <li><a href='/#/logout'><small>Logout</small></a></li>
           </ul>
+        </div>
       </nav>
     </header>
-
     <main>
       <div ng-view>
       </div>
     </main>
-
-    <footer class="container-fluid">
-      <nav ng-if="loggedIn" class='navbar navbar-inverse'>
-        <a target="_blank" href="/#/" class="navbar-brand">SPKR</a>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a target="_blank" href="https://github.com/glorypod">glory-pod.io</a>
-          </ul>
-      </nav>
-    </footer>
-    
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/d3/d3.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="app/auth/auth.js"></script>
+    <script src="app/index/backgroundController.js"></script>
     <script src="app/index/indexController.js"></script>
     <script src="app/feedback-form/feedbackForm.controller.js"></script>
     <script src="app/homepage/homepage.controller.js"></script>
-    <script src="app/new-form/newForm.controller.js"></script>
-    <script src="app/previous-forms/previousForms.controller.js"></script>
+    <script src="app/presentations/presentations.controller.js"></script>
     <script src="app/previous-pres/previousPres.controller.js"></script>
     <script src="app/services/services.js"></script>
     <script src="app/app.js"></script>

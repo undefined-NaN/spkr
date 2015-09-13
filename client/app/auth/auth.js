@@ -2,9 +2,9 @@
 
 angular.module('spkr.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, Auth) {
+.controller('AuthController', function ($scope, $rootScope, $route, $window, $location, Auth) {
   $scope.user = {};
- 
+
   $scope.$watch(Auth.isAuth, function(authed){
       if (authed) {
         $location.path('/data-profile');

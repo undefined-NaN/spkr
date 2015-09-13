@@ -43,8 +43,8 @@ angular.module('spkr.homepage', [])
 
         if (scoresData.length === 0) {
           $("#fallbackMessage").append(
-          "<h3>Oh no! It looks like you haven't recieved any feedback yet.</h3>" +
-          "<h3>Make sure to give out your <a href='/#/presentations/history'>feedback form URL</a> to start recieving feedback!</h3>")
+          "<h2>Oh no!</h2><p>It looks like you haven't recieved any feedback yet." +
+          "  Make sure to give out your <a href='/#/presentations'>feedback form URL</a> to start recieving feedback!</p>")
         } else {
 
           scoresData.sort(function(a, b) {
@@ -132,7 +132,7 @@ angular.module('spkr.homepage', [])
 
           function skillChart(data){
 
-            $('#date').text('total score for each presentation');
+            $('#date').text('Total score for each presentation');
 
             var SC = {};
             var SCDim = {t: 15, r: 0, b: 30, l: 0};
@@ -178,7 +178,7 @@ angular.module('spkr.homepage', [])
             
             function mouseout(d){   
               DC.update(skillsAverage,barColor);
-              $('#date').text('total score for each presentation');
+              $('#date').text('Total score for each presentation');
             }
             
             SC.update = function(data){
@@ -207,8 +207,7 @@ angular.module('spkr.homepage', [])
       
       } else {
         $("#fallbackMessage").append(
-          "<h3>Oh no! It looks like you haven't made any presentations yet.</h3>" +
-          "<h3><a href='/#/presentations/new'>Create</a> your first presentation to start recieving feedback!</h3>")
+          "<h2>Oh no!</h2><p>It looks like you haven't made any presentations yet.  <a href='/#/presentations'>Create</a> your first presentation to start recieving feedback!</p>")
       }
     })
 

@@ -1,6 +1,5 @@
 angular.module('spkr.previous-pres', ['ngRoute'])
   .controller('PrevPresController', function ($scope, $location, $routeParams, Pres, Auth) {
-
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
         $location.path('/presentations/history/'+$routeParams.id);
@@ -15,11 +14,6 @@ angular.module('spkr.previous-pres', ['ngRoute'])
       $scope.date  = data.date.slice(0,10);
       $scope.feedbacks = data.feedbacks.length;
       if ($scope.feedbacks > 0) {
-
-        $('#distChart').append(
-          '<h1>___________________________________________________</h1>' +
-          '<h3>feedback score distribution</h3>'
-        );
 
         var criteria = data.criteria;
 

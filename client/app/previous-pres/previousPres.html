@@ -1,6 +1,23 @@
 <div class="container">
-  <h1>{{title}}</h1>
-  <h4>{{date}}</h4>
-  <h4>feedback recieved: {{feedbacks}}</h4>
-  <div id="distChart"></div>
+  <h1>Feedback Score Distribution</h1>
+  <div class="row previous-presentation">
+    <div class="col-md-4">
+      <h2>Presentation Title</h2>
+      <div class="data">{{title}}</div>
+    </div>
+    <div class="col-md-4">
+      <h2>Date</h2>
+      <div class="data">{{date | date : "mediumDate" }}</div>
+    </div>
+    <div class="col-md-4">
+      <h2>Feedback Received</h2>
+      <div class="data">{{feedbacks}}</div> 
+    </div>
+  </div>
+  <div class="row">
+  	<div class="col-md-12">
+	  	<div id="distChart">
+	  	</div>
+  	</div>
+  </div>
 </div>
