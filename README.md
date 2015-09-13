@@ -71,7 +71,7 @@ Back-end tests:
 (from the project root directory in a separate tab on the command line)
 gulp mocha OR npm test
 
-### Roadmap
+## Roadmap
 
 View the project roadmap [here](https://github.com/glorypod/spkr/issues)
 
