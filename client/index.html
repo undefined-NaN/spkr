@@ -7,15 +7,19 @@
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body ng-class="{landing: withBackground}">
+  <body ng-cloak ng-class="{landing: withBackground}">
     <header  class="container-fluid" ng-controller="IndexController">
       <nav ng-if="loggedIn" class='navbar'>
-        <a href="/#/data-profile" class="navbar-brand">SPKR</a>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href='/#/data-profile'>Data Profile</a></li>
-          <li><a href='/#/presentations'>Presentations</a></li>
-          <li><a href='/#/logout'><small>Logout</small></a></li>
-        </ul>
+        <div class="navbar-header">
+          <a href="/#/data-profile" class="navbar-brand">SPKR</a>
+        </div>
+        <div class="collapse navbar-collapse" collapse="isCollapsed">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a focus href='/#/data-profile'>Data Profile</a></li>
+            <li><a href='/#/presentations'>Presentations</a></li>
+            <li><a href='/#/logout'><small>Logout</small></a></li>
+          </ul>
+        </div>
       </nav>
     </header>
     <main>
@@ -24,8 +28,9 @@
     </main>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="app/auth/auth.js"></script>
     <script src="app/index/backgroundController.js"></script>
     <script src="app/index/indexController.js"></script>

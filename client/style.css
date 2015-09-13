@@ -8,10 +8,10 @@ body, html {
 
 h1, h2, h3, h4 {
 	text-align: center;
-  color: #666;
+  color: #555;
 }
 header .navbar, footer .navbar {
-  margin-top: 0.25%;
+  margin-top: 0.5%;
   padding: 0.5% 1.5%;
 }
 
@@ -25,15 +25,16 @@ main {
 .navbar {
   background-color: grey;
 }
-.navbar a {
+.navbar a, .navbar-brand {
   color: white;
 }
 
-.navbar a:focus {
+.navbar a:focus, .navbar-brand:focus {
   color: grey;
+  background-color: white;
   font-weight: bold;
 }
-.navbar a:hover{
+.navbar a:hover, navbar-brand:hover{
   color: grey;
   background-color: white;
 }
@@ -51,9 +52,17 @@ body.landing {
 	text-align: center;
 	margin: 0 auto;
 }
-#landing h1, .landing-heading {
-	color: #ffffff;
+
+#landing h1, #signup h1, #login h1 {
   border: none;
+}
+#landing h1, .landing-heading {
+  color: #ffffff;
+}
+
+#signup, #login {
+  margin-top: 20%;
+  padding: 10%;
 }
 
 #landing button {
@@ -69,7 +78,7 @@ body.landing {
 
 h1 {
   border-bottom: 2px solid #d6e9c6;
-  margin: 0 30%;
+  margin: 0 25%;
   padding-bottom: 1%;
 }
 
@@ -90,6 +99,8 @@ h1 {
 }
 #fallbackMessage h2 {
   margin-bottom: 5%;
+  color: #337ab7;
+  font-style: italic;
 }
 
 #fallbackMessage p {
@@ -103,7 +114,7 @@ h1 {
 }
 #new-presentation{
 	width: 25%;
-	margin: 0 auto;
+	margin: 0 auto 5% auto;
 }
 .new-presentation-url {
   text-align: center;
@@ -167,18 +178,18 @@ path {
 }
 /********** FEEDBACK FORM ***********/
 
-.form-meta {
+.form-meta, .previous-presentation {
   margin: 2.5% auto;
   width: 80%;
 }
 
-.form-meta h2 {
+.form-meta h2, .previous-presentation h2 {
   font-size: 2.0em;
   font-style: italic;
   color: rgb(61, 159, 188);
 }
 
-.form-meta .data {
+.form-meta .data, .previous-presentation .data {
   text-align: center;
   font-size: 1.5em;
 }
@@ -186,7 +197,11 @@ path {
 #presentation-feedback{
   width: 80%;
   padding-left: 25%;
-  margin: 0 auto;*/
+  margin: 0 auto 5% auto;
+}
+
+#presentation-feedback .alert-success {
+  margin: 2% 0;
 }
 
 #feedbackButton {

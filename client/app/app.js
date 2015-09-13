@@ -7,7 +7,8 @@ angular.module('spkr', [
   'spkr.services',
   'spkr.index',
   'spkr.background',
-  'ngRoute' 
+  'ngRoute',
+  'ui.bootstrap' 
   ]
 ) 
 

@@ -44,7 +44,7 @@ angular.module('spkr.homepage', [])
         if (scoresData.length === 0) {
           $("#fallbackMessage").append(
           "<h2>Oh no!</h2><p>It looks like you haven't recieved any feedback yet." +
-          "  Make sure to give out your <a href='/#/presentation/history'>feedback form URL</a> to start recieving feedback!</p>")
+          "  Make sure to give out your <a href='/#/presentations'>feedback form URL</a> to start recieving feedback!</p>")
         } else {
 
           scoresData.sort(function(a, b) {
