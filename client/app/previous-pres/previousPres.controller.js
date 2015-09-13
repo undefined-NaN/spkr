@@ -17,7 +17,7 @@ angular.module('spkr.previous-pres', ['ngRoute'])
 
         $('#distChart').append(
           '<h1>___________________________________________________</h1>' +
-          '<h3>feedback score distribution</h3>'
+          '<h2>Feedback score distribution</23>'
         );
 
         var criteria = data.criteria;

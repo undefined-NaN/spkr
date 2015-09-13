@@ -2,9 +2,8 @@ angular.module('spkr', [
   'spkr.auth',
   'spkr.feedback-form',
   'spkr.homepage',
-  'spkr.new-form',
-  'spkr.previous-forms',
   'spkr.previous-pres',
+  'spkr.presentations',
   'spkr.services',
   'spkr.index',
   'spkr.background',
@@ -40,6 +39,10 @@ angular.module('spkr', [
       controller: 'FeedbackController'
     })
 
+    .when('/presentations', {
+      templateUrl: 'app/presentations/presentations.html'
+    })
+
     .when('/presentations/history/:id', {
       templateUrl: 'app/previous-pres/previousPres.html',
       controller: 'PrevPresController'
@@ -49,7 +52,7 @@ angular.module('spkr', [
       templateUrl: 'app/homepage/homepage.html',
       controller: 'HomepageController'
     })
-
+/*
     .when('/presentations/new', {
       templateUrl: 'app/new-form/newForm.html',
       controller: 'NewFormController'
@@ -58,7 +61,7 @@ angular.module('spkr', [
     .when('/presentations/history', {
       templateUrl: 'app/previous-forms/previousForms.html',
       controller: 'PrevFormsController'
-    })
+    })*/
     
     .when('/logout', {
       templateUrl: 'app/auth/landing.html',
