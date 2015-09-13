@@ -14,23 +14,6 @@ header .navbar, footer .navbar {
   padding: 0.5% 1.5%;
 }
 
-.navbar {
-  background-color: grey;
-}
-.navbar a {
-  color: white;
-}
-
-.navbar-right li {
-  border-width: 1px;
-  border-color: white;
-}
-
-.navbar a:hover {
-  color: grey;
-  background-color: white;
-}
-
 main {
 	min-height: 60%;
 }
@@ -38,6 +21,21 @@ main {
 .btn-link, .btn-link:hover, button.btn-danger .btn-link:hover {
   color: #DE7B59;
 }
+.navbar {
+  background-color: grey;
+}
+.navbar a {
+  color: white;
+}
+
+.navbar a:focus {
+  color: white;
+}
+.navbar a:hover, a:focus{
+  color: grey;
+  background-color: white;
+}
+
 
 /********** LANDING PAGE **********/
 
