@@ -109,6 +109,10 @@ h1 {
 }
 
 /************ Presentations ***********/
+.presentations-inner-wrapper {
+  margin-top: 5%;
+}
+
 .presentations h1 {
   margin-bottom: 1%;
 }
