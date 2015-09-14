@@ -89,16 +89,16 @@ View the project roadmap [here](https://github.com/glorypod/spkr/issues)
 ## Avenues to explore
 - The server should make sure that the request process is authorized before adding a presentation
 
--Lack of public feedback form control
+- Lack of public feedback form control
   --Refresh on feedback form adds data again
 
--Make the feedback form customizable
+- Make the feedback form customizable
 
--Enable user password change functionality
+- Enable user password change functionality
 
--Server should make sure that the request process is authorized before adding a presentation
+- Server should make sure that the request process is authorized before adding a presentation
 
--Please see our task backlog [here]((https://waffle.io/glorypod/spkr) for more information
+- Please see our task backlog [here](https://waffle.io/glorypod/spkr) for more information
 
 ## Contributing
 
