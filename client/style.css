@@ -56,6 +56,13 @@ main {
   padding-top: 5%;
 }
 
+.powered-by {
+  text-align: right;
+  padding-top: 3%;
+  padding-right: 5%; 
+  padding-bottom: 4%;
+}
+
 /********** LANDING PAGE **********/
 
 body.landing {
