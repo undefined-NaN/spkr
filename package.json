@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha specs/server"
+    "test": "mocha specs/server",
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
