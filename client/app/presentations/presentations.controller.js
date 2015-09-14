@@ -1,6 +1,8 @@
 angular.module('spkr.presentations', [])
   .controller('PresentationsController', function($scope, $window, $location, Auth, Pres) {
-
+    
+    $scope.root = window.location.href.slice(0,window.location.href.lastIndexOf('/'));
+    
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
         $location.path('/presentations');
@@ -15,7 +17,6 @@ angular.module('spkr.presentations', [])
     $scope.submit = function(presentation){
       Pres.createPresentation(presentation).then(function(data, err){
         if(err) console.log(err);
-        $scope.root = window.location.href.slice(0,window.location.href.lastIndexOf('/'));
         $scope.feedbackUrl = $scope.root + "/feedback-form/" + data.newPresentation.presentationid;
         $scope.getData();
         $scope.presentation = {};
