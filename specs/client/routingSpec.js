@@ -14,13 +14,6 @@ describe('Routing', function() {
         'app/auth/landing.html');
     });
 
-  it('Should have /landing route, template, and controller', function() {
-    expect($route.routes['/landing']).to.be.ok();
-    expect($route.routes['/landing'].controller).to.be('AuthController');
-    expect($route.routes['/landing'].templateUrl).to.be(
-      'app/auth/landing.html');
-  });
-
   it('Should have /login route, template, and controller', function() {
     expect($route.routes['/login']).to.be.ok();
     expect($route.routes['/login'].controller).to.be('AuthController');
