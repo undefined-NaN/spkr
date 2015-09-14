@@ -50,7 +50,7 @@ body.landing {
 #landing {
 	font-size: 2em;
 	text-align: center;
-	margin: 0 auto;
+	margin: 8% auto 0 auto;
 }
 
 #landing h1, #signup h1, #login h1 {
@@ -90,7 +90,7 @@ h1 {
 }
 
 #fallbackMessage {
-  width: 30%;
+  width: 70%;
   text-align: justify;
   margin: 0 auto;
   font-size: 1.5em;
@@ -111,17 +111,31 @@ h1 {
 /************ Presentations ***********/
 .presentations-inner-wrapper {
   margin-top: 5%;
+  width: 95%;
+}
+
+.presentation-table {
+  padding-left: 0%;
 }
 
 .presentations h1 {
   margin-bottom: 1%;
 }
 #new-presentation{
-	width: 25%;
-	margin: 0 auto 5% auto;
+	width: 100%;
+	margin: 0 auto;
 }
 .new-presentation-url {
   text-align: center;
+}
+
+.form-group input, .form-group label {
+  display: block;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 1%;
 }
 
 /********** D3 STYLES **********/
@@ -149,7 +163,7 @@ path {
   display:inline-block;
   margin:10px;
   margin-top:30px;
-  margin-left:0;
+  margin-left:25px;
   max-height:280px;
   overflow:auto;
 }
@@ -202,6 +216,10 @@ path {
   width: 80%;
   padding-left: 25%;
   margin: 0 auto 5% auto;
+}
+
+#presentation-feedback label {
+  font-size: 1.5em;
 }
 
 #presentation-feedback .alert-success {
