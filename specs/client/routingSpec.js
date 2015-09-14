@@ -53,6 +53,12 @@ describe('Routing', function() {
       'app/homepage/homepage.html');
   });
 
+  it('Should have /presentations route and template', function() {
+    expect($route.routes['/presentations']).to.be.ok();
+    expect($route.routes['/presentations'].templateUrl).to.be(
+      'app/presentations/presentations.html');
+  });
+
   it('Should have /logout route, template, and controller', function() {
     expect($route.routes['/logout']).to.be.ok();
     expect($route.routes['/logout'].controller).to.be('AuthController');
