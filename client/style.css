@@ -39,6 +39,22 @@ main {
   background-color: white;
 }
 
+/********** About **********/
+
+.about {
+  width: 50%;
+  text-align: justify;
+  font-size: 1.5em;
+  line-height: 150%;
+}
+
+.logo {
+  font-size: 2.0em;
+}
+
+.about-content {
+  padding-top: 5%;
+}
 
 /********** LANDING PAGE **********/
 
