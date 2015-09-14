@@ -6,8 +6,12 @@ var User = require('../users/userModel.js'),
     Schema = mongoose.Schema;
     //jwt  = require('jwt-simple');
 
-
 module.exports = {
+//adds a presentation to the database
+//first checks to make sure that the specific user exists
+//if not it will fail
+//this ensures that presentations that are not linked to anything
+//are not added and clutter the database
   create: function(req, res, next){
     var title = req.body.title,
         date  = req.body.date,
@@ -49,8 +53,11 @@ module.exports = {
           }
         })
         .then(function(founduser){
+          //again, references are not two way; ObjectID's must be manually added 
+          //to other docs
           founduser.presentations.push(presentationid)
           founduser.save()
+          //this manually adds and preps the presentation id for json return to front end 
           newPresentation.presentationid = presentationid
           res.json({newPresentation: newPresentation })
         })
@@ -60,9 +67,14 @@ module.exports = {
     })
   },
 
+//retrieves all feedback data for a specific presentation
   onePres: function(req, res, next){
     var presentationId = mongoose.Types.ObjectId(req.params.id);
     Presentation.findOne({_id: presentationId})
+                //the 'username' parameter to populate restricts
+                //what data is put in place of the objectID
+                //without this, the _presenter field would then
+                //have everything from the doc that it references
                 .populate('_presenter', 'username')
                 .populate('feedbacks')
                 .exec(function(err, presentations){

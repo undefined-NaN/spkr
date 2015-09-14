@@ -5,7 +5,6 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha specs/server",
-    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
@@ -37,7 +36,6 @@
     "angular-route": "^1.4.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
-    "bower": "^1.5.2",
     "chai": "^3.2.0",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",

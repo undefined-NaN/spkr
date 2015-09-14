@@ -56,8 +56,13 @@ module.exports = {
       })
       .then(function (user) {
         // create token to send back for auth
-        console.log(user);
         var token = jwt.encode(user, 'secret');
+        //the user id is included in the encoded token 
+        //that is sent back, but the front end has no way
+        //of decoding token
+        //the front end needs the user id in order to properly make
+        //requests to the server
+
         res.json({token: token, userid: user._id});
       })
       .fail(function (error) {
@@ -90,18 +95,24 @@ module.exports = {
     }
   },
 
+  //serves back all data for a given user
   serveData: function(req, res, next){
   var userid = mongoose.Types.ObjectId(req.params.id);
   var username;
+  //the presentation documentations do not have a username property
+  //so the username must be manually queried and added to json before sending it back
   User.find({_id: userid})
               .populate('presentations')
               .then(function(user){
                 username = user[0].username
               })
               .then(function(){
+                //populate converts the nonsensical ObjectID's to their corresponding documents
                 return Presentation.find({_presenter: userid}).populate("feedbacks")
               })
               .then(function(feedbacks){
+                //the feedbacks object from the previous then statement
+                //does not contain a username and is being manually added here
                 feedbacks.unshift({username: username})
                 res.json(feedbacks)
               })
