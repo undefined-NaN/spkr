@@ -30,6 +30,11 @@ angular.module('spkr', [
       controller: 'AuthController'
     })
 
+    // .when('/landing', {
+    //   templateUrl: 'app/auth/landing.html',
+    //   controller: 'AuthController'
+    // })
+
     .when('/about', {
       templateUrl: 'app/about/about.html'
     })
