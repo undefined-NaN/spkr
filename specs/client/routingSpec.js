@@ -59,6 +59,14 @@ describe('Routing', function() {
       'app/presentations/presentations.html');
   });
 
+  it('Should have /presentations/history/:id route, template, and controller', function() {
+    expect($route.routes['/presentations/history/:id']).to.be.ok();
+    expect($route.routes['/presentations/history/:id'].controller).to.be(
+      'PrevPresController');
+    expect($route.routes['/presentations/history/:id'].templateUrl).to.be(
+      'app/previous-pres/previousPres.html');
+  });
+
   it('Should have /logout route, template, and controller', function() {
     expect($route.routes['/logout']).to.be.ok();
     expect($route.routes['/logout'].controller).to.be('AuthController');
