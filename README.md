@@ -43,12 +43,9 @@ Once logged in, presenters will be able to track their overall rating on a speci
 From within the root directory:
 
 ```sh
+sudo npm install -g bower
 npm install
-
-npm install should install everything(front and back end dependencies) that is needed for the project.
-The below commands are only necessary if the built-in bower install script fails.
-(sudo npm install -g bower) 
-(bower install)
+bower install
 ```
 
 ### Viewing the project
