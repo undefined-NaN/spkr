@@ -9,7 +9,6 @@ angular.module('spkr.services', [])
   // after you login/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var login = function (user) {
-    console.log('inside login')
     return $http({
 
       method: 'POST',
@@ -63,10 +62,9 @@ angular.module('spkr.services', [])
   };
 })
 // factory for feedback form 
-
+//submits the feedback for the form
 .factory('FeedbackService', function ($http, $location, $window) {
     var submitFeedback = function(presentation) {
-      console.log(presentation, " i am inside the factory")
       return $http({
         method: 'POST',
         url: 'api/feedback/',
@@ -80,12 +78,11 @@ angular.module('spkr.services', [])
       submitFeedback: submitFeedback
     };
 })
-
+//sends the data to server to create a new presentation
 .factory('Pres', function ($http, $location, $window) {
     var createPresentation = function(presentation) {
       var userid = $window.localStorage.getItem('userid');
       presentation.userid = userid;
-      console.log('in Pres#createPresentation', presentation);
       return $http({
         method: 'POST',
         url: 'api/presentations/',
@@ -94,7 +91,7 @@ angular.module('spkr.services', [])
         return res.data;
       })
     };
-
+ //retrieves the data
     var getData = function(id){
       return $http({
         method: 'GET',
