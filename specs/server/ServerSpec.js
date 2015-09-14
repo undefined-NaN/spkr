@@ -1,9 +1,19 @@
+//'mocha-mongodb' is required for the db.remove commands to work
 var db = require('mocha-mongodb');
 var expect = require('chai').expect;
 var request = require('request');
 
-
+//this test shares the same database as the main project
 db.connect('mongodb://localhost/spkr');
+
+
+//db.remove will be run before each "it" statement throughout this test
+//it will ONLY reach into the database and remove
+//docs with the given parameters and will not affect
+//entries that have already been put in as long as these
+//with that in mind, we choose a fairly uncommon username, presentation title, and scores array
+
+
 db.remove('users', {username: 'Svnh'});
 db.remove('presentations', {title: 'How to write a test'});
 db.remove('feedbacks', {scores: [ 999, 999, 999, 999, 999, 999, 999, 999, 999 ]});

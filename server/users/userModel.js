@@ -17,14 +17,12 @@ var UserSchema = new mongoose.Schema({
     required: true
   },
 
+  //this is the way to create doc references
   presentations: [{type: Schema.Types.ObjectId, ref: 'presentations'}],
   
   salt: String
 });
 
-// UserSchema.methods.addPresentation = function (presentationId){
-  
-// }
 
 UserSchema.methods.comparePasswords = function (candidatePassword) {
   var defer = Q.defer();
