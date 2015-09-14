@@ -14,7 +14,10 @@
     1. [Viewing the project](#viewing-the-project)
     1. [Running tests](#running-tests)
 1. [Roadmap](#roadmap)
+1. [Known Bugs](#known-bugs)
+1. [Avenues to explore](#avenues-to-explore)
 1. [Contributing](#contributing)
+
 
 ## What is SPKR?
 
@@ -77,6 +80,25 @@ gulp mocha OR npm test
 ## Roadmap
 
 View the project roadmap [here](https://github.com/glorypod/spkr/issues)
+
+## Known Bugs
+
+-At times, the landing page image does not properly load and user only sees a white background
+  --Possibly related to index/backgroundController file test
+
+## Avenues to explore
+- The server should make sure that the request process is authorized before adding a presentation
+
+-Lack of public feedback form control
+  --Refresh on feedback form adds data again
+
+-Make the feedback form customizable
+
+-Enable user password change functionality
+
+-Server should make sure that the request process is authorized before adding a presentation
+
+-Please see our task backlog [here]((https://waffle.io/glorypod/spkr) for more information
 
 ## Contributing
 
