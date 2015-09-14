@@ -38,7 +38,7 @@
 					<td><a href='{{"/#/presentations/history/"+ pres._id}}'>{{pres.title}}</a></td>
 					<td><a href='{{"/#/presentations/history/"+ pres._id}}'>{{pres.date | date: "mediumDate"}}</a></td>
 					<td><a href='{{"/#/presentations/history/"+ pres._id}}'>{{pres.feedbacks.length}}</a></td>
-					<td><a href='{{"/#/feedback-form/"+ pres._id}}'>{{"http://localhost:8000/#/feedback-form/"+ pres._id}}</a></td>
+					<td><a href='{{"/#/feedback-form/"+ pres._id}}'>{{root + "/feedback-form/" + pres._id}}</a></td>
 				</tr>
 				</tbody>
 			</table>
