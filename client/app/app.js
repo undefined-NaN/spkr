@@ -53,16 +53,6 @@ angular.module('spkr', [
       templateUrl: 'app/homepage/homepage.html',
       controller: 'HomepageController'
     })
-/*
-    .when('/presentations/new', {
-      templateUrl: 'app/new-form/newForm.html',
-      controller: 'NewFormController'
-    })  
-
-    .when('/presentations/history', {
-      templateUrl: 'app/previous-forms/previousForms.html',
-      controller: 'PrevFormsController'
-    })*/
     
     .when('/logout', {
       templateUrl: 'app/auth/landing.html',
