@@ -10,7 +10,7 @@ h1, h2, h3, h4 {
 	text-align: center;
   color: #555;
 }
-header .navbar, footer .navbar {
+header .navbar {
   margin-top: 0.5%;
   padding: 0.5% 1.5%;
 }
@@ -18,7 +18,7 @@ header .navbar, footer .navbar {
 main {
 	min-height: 60%;
 }
-/********** BUTTON & LINK STYLES ***********/
+/********** Button and Link Styles ***********/
 .btn-link, .btn-link:hover, button.btn-danger .btn-link:hover {
   color: #DE7B59;
 }
@@ -56,7 +56,18 @@ main {
   padding-top: 5%;
 }
 
-/********** LANDING PAGE **********/
+/********** Footer **********/
+.powered-by {
+  text-align: right;
+  padding: 3% 0;
+  width: 80%;
+  /*
+  padding-top: 3%;
+  padding-right: 5%; 
+  padding-bottom: 4%;*/
+}
+
+/********** Landing **********/
 
 body.landing {
   background-image: url('app/assets/6475901681_488cd406f3_b.jpg');
@@ -90,7 +101,7 @@ body.landing {
 	margin-bottom: 1%;
 }
 
-/*********** DATA-PROFILE **********/
+/*********** Data-Profile **********/
 
 h1 {
   border-bottom: 2px solid #d6e9c6;
@@ -170,7 +181,6 @@ rect:hover {
 .table {
 	text-align: left;
 }
-
 path {
   fill-opacity:0.8;
   stroke-opacity:0;
