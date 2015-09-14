@@ -32,8 +32,14 @@ angular.module('spkr.auth', [])
         $location.path('/data-profile');
       })
       .catch(function (error) {
-        $scope.user.error = "Username already exists!";
-        console.error(error);
+        var passLength= document.getElementById('password').value.length;
+        if (passLength < 8) {
+          $scope.user.error= "Password must be 8 characters or more!"
+        }
+        else if(passLength >=8) {
+          $scope.user.error = "Username already exists!";
+          console.error(error);}
+        
       });
   };
 });
