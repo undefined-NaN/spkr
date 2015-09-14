@@ -95,6 +95,8 @@ View the project roadmap [here](https://github.com/glorypod/spkr/issues)
 
 - Server should make sure that the request process is authorized before adding a presentation
 
+- Shorten anonymous feedback form link url
+
 - Please see our task backlog [here](https://waffle.io/glorypod/spkr) for more information
 
 ## Contributing
