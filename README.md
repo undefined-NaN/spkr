@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/undefined-NaN/spkr.png?label=ready&title=Ready)](https://waffle.io/undefined-NaN/spkr)
 [![Stories in Ready](https://badge.waffle.io/glorypod/spkr.png?label=ready&title=Ready)](https://waffle.io/glorypod/spkr)
 # SPKR
 
