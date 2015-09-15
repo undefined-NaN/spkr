@@ -381,7 +381,7 @@ describe("Feedback controller:", function(){
 
             request(presenterOptions, function(err, res, body){
               expect(body.feedbacks[0]._presentation).to.equal(presentationId)
-              expect(body.feedbacks[0]).to.have.property('scores')
+              expect(body.feedbacks[0]).to.have.property('comments')
               done();
             })
          })
