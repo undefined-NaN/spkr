@@ -332,6 +332,63 @@ describe("Feedback controller:", function(){
     })
   })
 
+  it("Accepts and comments as part of feedback", function(done){
+    var userOptions = {
+    'method': 'POST',
+    'uri': 'http://127.0.0.1:8000/api/users/signup',
+    'json': {
+      'username': 'Svnh',
+      'password': 'Svnh'
+      }
+    };
+
+    request(userOptions, function(err, res, body){
+      var userid = body.userid;
+      var presenterOptions = {
+        'method': 'POST',
+        'uri': 'http://127.0.0.1:8000/api/presentations/',
+        'json': {
+          "title": 'How to write a test',
+          "date" : '12/1/86',
+          "userid": userid,
+          "expiration": '12/2/86'
+        }
+      };
+      request(presenterOptions, function(err, res, body){
+        var presentationId = body.newPresentation.presentationid;
+        var feedbackObj = {
+          'method': 'POST',
+          'uri': 'http://127.0.0.1:8000/api/feedback',
+          'json': {
+            'presId': presentationId,
+            "organization":999,
+            "clarity": 999,
+            "volume": 999,
+            "posture": 999,
+            "prepared": 999,
+            "visualAids": 999,
+            "connect": 999,
+            "question": 999,
+            "overall": 999,
+            "comment": "Tester!",
+          }
+        };
+
+          request(feedbackObj, function(err, res, body){
+            expect(body.data).to.equal("Thanks for providing feedback!")
+            presenterOptions.uri = 'http://127.0.0.1:8000/api/presentations/' + presentationId;
+            presenterOptions.method = 'GET';
+
+            request(presenterOptions, function(err, res, body){
+              expect(body.feedbacks[0]._presentation).to.equal(presentationId)
+              expect(body.feedbacks[0]).to.have.property('scores')
+              done();
+            })
+         })
+      })
+    })
+  })
+
   it("Fails when trying to add to a nonexistent presentation", function(done){
     var feedbackObj = {
       'method': 'POST',
