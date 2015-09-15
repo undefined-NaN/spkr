@@ -88,6 +88,12 @@
             </div>
           </div>
           <div class="col-xs-8">
+            <label for="comment">What other feedback do you have for the speaker?</label>
+            <div class="range range-success">
+              <textarea name="comment" form="presentation-feedback">Enter text here...</textarea>
+            </div>
+          </div>
+          <div class="col-xs-8">
             <button id="feedbackButton" ng-hide="loggedIn || expiration < today" class="btn btn-primary">Submit Feedback</button>
           </div>
           <div class="col-xs-8">
