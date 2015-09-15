@@ -332,7 +332,7 @@ describe("Feedback controller:", function(){
     })
   })
 
-  it("Accepts and comments as part of feedback", function(done){
+  it("Accepts and saves comments as part of feedback", function(done){
     var userOptions = {
     'method': 'POST',
     'uri': 'http://127.0.0.1:8000/api/users/signup',
@@ -370,7 +370,7 @@ describe("Feedback controller:", function(){
             "connect": 999,
             "question": 999,
             "overall": 999,
-            "comment": "Tester!",
+            "comments": "Tester!",
           }
         };
 
