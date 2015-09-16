@@ -24,11 +24,18 @@
     <div class="col-md-12">
       <br>
       <h1>Comments</h1>
-      <div id="comments">
-        <div class="comment col-md-9" ng-repeat="comment in comments">
-        {{comment}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <h2>All Comments</h2>
+      <div class="comments">
+        <div class="comment" ng-repeat="comment in comments track by $index">
+          {{comment}}
         </div>
       </div>
     </div>
+    <br>
+    <div id="wordcloud" class="col-md-3"></div>
   </div>
 </div>

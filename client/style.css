@@ -167,13 +167,22 @@ h1 {
 
 /********** Comments ***********/
 
+.comments {
+  height: 300px;
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
 .comment {
-  float: none;
-  margin: 0 auto;
   padding: 1%;
   font-size: 1.2em;
   border-bottom: 2px solid #d6e9c6;
+  width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
 }
+
 /********** D3 STYLES **********/
 rect:hover {
   opacity:.75
