@@ -285,6 +285,33 @@ angular.module('spkr.services', [])
       }        
       return SC;
     }
+
+      /* start d3-feature */
+
+    var lineGraph = function(data) {
+      //save data to be used
+
+      //create svg for line graph
+
+      //create function for x-axis mapping
+
+      //add x-axis to line graph svg
+
+      //create function for y-axis mapping
+
+      //add y-axis to line graph svg
+
+      //create lines out of data
+
+      //create mouse utility functions 
+        //mouse over should display specific skills
+
+      //create function to update the line chart
+
+      //return the chart
+
+    }
+      /* end-d3-feature */
     
     //create an array of arrays with the criteria and average score for each criteria
     var dateAverage = criteria.map(function(d,i){return [d,Math.round(d3.mean(scoresData.map(function(t){return t.scores[i];})))];});    
