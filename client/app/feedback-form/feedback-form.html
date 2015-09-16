@@ -89,8 +89,11 @@
           </div>
           <div class="col-xs-8">
             <label for="comment">What other feedback do you have for the speaker?</label>
-            <div class="range range-success">
-              <textarea id="comments" name="comment" form="presentation-feedback" ng-model="presentation.comments" ng-keyup="autoExpand($event)">Enter text here...</textarea>
+            <div>
+              <textarea id="comments" name="comment" form="presentation-feedback" ng-model="presentation.comments" ng-keyup="autoExpand($event)" ng-disabled="presentation.comments.length >= 500">Enter text here...</textarea>
+              <div class="charCounter">
+                {{500 - presentation.comments.length}} characters remaining
+              </div>
             </div>
           </div>
           <div class="col-xs-8">
