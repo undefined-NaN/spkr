@@ -443,7 +443,7 @@ angular.module('spkr.services', [])
       tags = entries(tags).sort(function(a, b) { return b.size - a.size; });
       tags.forEach(function(d) { 
         d.text = cases[d.text];
-        d.size = d.size*30;
+        d.size = d.size*20;
       });
       return tags;
     }
@@ -453,10 +453,11 @@ angular.module('spkr.services', [])
   }
 
   function makeCloud(comments) {
+    // Initialize the settings of the word cloud
     var mappedWords = wordMap(comments);
     console.log(mappedWords);
     layout = d3.layout.cloud()
-        .size([500, 500])
+        .size([400, 400])
         .words(mappedWords)
         .padding(5)
         .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -467,7 +468,8 @@ angular.module('spkr.services', [])
   }
 
   function draw(words) {
-    d3.select("body").append("svg")
+    // render the word cloud
+    d3.select("#wordcloud").append("svg")
       .attr("width", layout.size()[0])
       .attr("height", layout.size()[1])
       .append("g")
