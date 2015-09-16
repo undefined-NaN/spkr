@@ -20,7 +20,8 @@ angular.module('spkr.feedback-form', ['ngRoute'])
       visualAids: 50,
       connect: 50,
       question: 50,
-      overall: 50
+      overall: 50,
+      comments: null
     },
 
     
