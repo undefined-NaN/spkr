@@ -90,7 +90,7 @@
           <div class="col-xs-8">
             <label for="comment">What other feedback do you have for the speaker?</label>
             <div class="range range-success">
-              <textarea name="comment" form="presentation-feedback" ng-model="presentation.comments">Enter text here...</textarea>
+              <textarea id="comments" name="comment" form="presentation-feedback" ng-model="presentation.comments" ng-keyup="autoExpand($event)">Enter text here...</textarea>
             </div>
           </div>
           <div class="col-xs-8">

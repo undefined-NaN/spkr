@@ -559,3 +559,35 @@ input:-moz-placeholder {
       from(#a4b0cb),
       to(#b9c5dd));
 }
+
+#comments {
+  height:auto;
+  max-width:600px;
+  color:#999;
+  font-weight:400;
+  font-size: 18px;
+  font-family:'Ubuntu', Helvetica, Arial, sans-serif;
+  background:#fff;
+  border-radius:3px;
+  line-height:2em;
+  border:none;
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+  padding:30px;
+  -webkit-transition: height 2s ease;
+  -moz-transition: height 2s ease;
+  -ms-transition: height 2s ease;
+  -o-transition: height 2s ease;
+  transition: height 2s ease;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+    #comments {
+      width: 450px;
+    }
+}
+@media only screen (max-width: 767px) {
+    #comments {
+      width: 200px;
+    }
+}
