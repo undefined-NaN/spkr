@@ -13,11 +13,13 @@ angular.module('spkr.previous-pres', ['ngRoute'])
     .then(function(data){
       $scope.title = data.title;
       $scope.date  = data.date.slice(0,10);
+      $scope.comments = [];
       $scope.feedbacks = data.feedbacks.length;
       if ($scope.feedbacks > 0) { //if the presentation has any feedbacks
         var criteria = data.criteria;
         //create an array or arrays filled with zeroes
         var distData = [];
+        //Note: Scale is hardcoded here.
         for (var i = 0; i <= 100; i++) {
           distData[i] = [];
           for (var j = 0; j < criteria.length; j++) {
@@ -29,11 +31,18 @@ angular.module('spkr.previous-pres', ['ngRoute'])
           feedback.scores.forEach(function(score,i){
             distData[score][i]++;
           });
+          if ( feedback.comments ) {
+            $scope.comments.push(feedback.comments);
+          }
         });
         //call the presentationGraph factory function (this is where d3 happens)
         Vis.presentationGraph(criteria, distData);
+        if ( $scope.comments.length === 0 ) {
+          $scope.comments.push('No comments have been received.');
+        }
       }
     })
+
     .catch(function(error){
       $location.path('/data-profile')
     })
