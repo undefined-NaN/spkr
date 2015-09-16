@@ -179,6 +179,8 @@ h1 {
   font-size: 1.2em;
   border-bottom: 2px solid #d6e9c6;
   width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /********** D3 STYLES **********/
