@@ -40,7 +40,7 @@ angular.module('spkr.previous-pres', ['ngRoute'])
         if ( $scope.comments.length === 0 ) {
           $scope.comments.push('No comments have been received.');
         }
-        WordCloud.makeCloud()
+        WordCloud.makeCloud($scope.comments);
       }
     })
     .catch(function(error){
