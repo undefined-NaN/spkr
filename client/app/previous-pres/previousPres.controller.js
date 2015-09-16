@@ -1,5 +1,5 @@
 angular.module('spkr.previous-pres', ['ngRoute'])
-  .controller('PrevPresController', function ($scope, $location, $routeParams, Pres, Auth, Vis) {
+  .controller('PrevPresController', function ($scope, $location, $routeParams, Pres, Auth, Vis, WordCloud) {
     $scope.$watch(Auth.isAuth, function(authed) {
       if (authed) {
         $location.path('/presentations/history/'+$routeParams.id);
@@ -40,9 +40,9 @@ angular.module('spkr.previous-pres', ['ngRoute'])
         if ( $scope.comments.length === 0 ) {
           $scope.comments.push('No comments have been received.');
         }
+        WordCloud.makeCloud()
       }
     })
-
     .catch(function(error){
       $location.path('/data-profile')
     })
