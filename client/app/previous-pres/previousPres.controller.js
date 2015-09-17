@@ -9,6 +9,15 @@ var app = angular.module('spkr.previous-pres', ['ngRoute'])
       }
     }, true);
 
+        $scope.class = "glyphicon-plus-sign";
+    
+    $scope.changeClass = function(){
+        if ($scope.class === "glyphicon-plus-sign")
+            $scope.class = "glyphicon-minus-sign";
+         else
+            $scope.class = "glyphicon-plus-sign";
+    };
+
     //get the data for this presentation
     Pres.getData($routeParams.id)
     .then(function(data){
@@ -88,8 +97,6 @@ var app = angular.module('spkr.previous-pres', ['ngRoute'])
                 if (!attrs.expanded) {
                     content.style.border = '1px solid rgba(0,0,0,0)';
                     var y = content.clientHeight;
-                    console.log(content.clientHeight)
-                    console.log(content)
                     content.style.border = 0;
                     target.style.height = y + 'px';
                 } else {

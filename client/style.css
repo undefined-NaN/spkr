@@ -590,6 +590,11 @@ input:-moz-placeholder {
   overflow: hidden;
 }
 
+#toggleSlide {
+  font-size: .6em;
+  color: black;
+}
+
 @media only screen and (min-width: 768px) {
     #comments {
       width: 450px;
