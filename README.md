@@ -105,6 +105,7 @@ View the project roadmap [here](https://github.com/glorypod/spkr/issues)
 - Added the ability for users to add additional comments
 - Displayed a word map built from additional comments
 - Added additional styling to the previous presentation dashboard
+- Improve styling on landing page
 
 ## Contributing
 

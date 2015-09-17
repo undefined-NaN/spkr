@@ -592,7 +592,7 @@ input:-moz-placeholder {
 
 #toggleSlide {
   font-size: .6em;
-  color: black;
+  color: #555;
 }
 
 @media only screen and (min-width: 768px) {
