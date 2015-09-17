@@ -168,7 +168,7 @@ h1 {
 /********** Comments ***********/
 
 .comments {
-  height: 300px;
+  max-height: 300px;
   overflow: scroll;
   overflow-y: auto;
   overflow-x: auto;
