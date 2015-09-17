@@ -101,6 +101,17 @@ body.landing {
 	margin-bottom: 1%;
 }
 
+.landing-heading {
+  text-transform: lowercase;
+  margin-bottom: 1%;
+  background-color:rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin: auto;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+
+
 /*********** Data-Profile **********/
 
 h1 {
