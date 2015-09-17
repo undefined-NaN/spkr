@@ -27,64 +27,73 @@
           <div class="col-xs-8">
             <label for="organization">Was the presentation organized well?</label>
             <div class="range range-success">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="organization.value=value" ng-model="presentation.organization">
-              <output id="organization">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="organization.value=value" ng-model="presentation.organization">
+              <output id="organization">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="clarity">Was the message clear?</label>
             <div class="range range-info">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="clarity.value=value" ng-model="presentation.clarity">
-              <output id="clarity">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="clarity.value=value" ng-model="presentation.clarity">
+              <output id="clarity">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="posture">Was the speaker loud enough?</label>
             <div class="range range-success">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="volume.value=value" ng-model="presentation.volume">
-              <output id="volume">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="volume.value=value" ng-model="presentation.volume">
+              <output id="volume">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="posture">Did the speaker have appropriate posture?</label>
             <div class="range range-info">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="posture.value=value" ng-model="presentation.posture">
-              <output id="posture">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="posture.value=value" ng-model="presentation.posture">
+              <output id="posture">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="prepared">Did the speaker appear well prepared?</label>
             <div class="range range-success">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="prepared.value=value" ng-model="presentation.prepared">
-              <output id="prepared">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="prepared.value=value" ng-model="presentation.prepared">
+              <output id="prepared">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="visualAids">Were the visual aids helpful?</label>
             <div class="range range-info">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="visualAids.value=value" ng-model="presentation.visualAids">
-              <output id="visualAids">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="visualAids.value=value" ng-model="presentation.visualAids">
+              <output id="visualAids">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="connect">Did the speaker connect with the audience?</label>
             <div class="range range-success">
-            <input type="range" name="range" min="1" max="100" value="50" onchange="connect.value=value" ng-model="presentation.connect">
-            <output id="connect">50</output>
+            <input type="range" name="range" min="1" max="7" value="7" onchange="connect.value=value" ng-model="presentation.connect">
+            <output id="connect">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="question">Did the speaker answer questions appropriately?</label>
             <div class="range range-info">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="question.value=value" ng-model="presentation.question">
-              <output id="question">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="question.value=value" ng-model="presentation.question">
+              <output id="question">7</output>
             </div>
           </div>
           <div class="col-xs-8">
             <label for="overall">How would you rate the overall presentation?</label>
             <div class="range range-success">
-              <input type="range" name="range" min="1" max="100" value="50" onchange="overall.value=value" ng-model="presentation.overall">
-              <output id="overall">50</output>
+              <input type="range" name="range" min="1" max="7" value="7" onchange="overall.value=value" ng-model="presentation.overall">
+              <output id="overall">7</output>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <label for="comment">What other feedback do you have for the speaker?</label>
+            <div>
+              <textarea id="comments" name="comment" form="presentation-feedback" ng-model="presentation.comments" ng-keyup="autoExpand($event)" ng-disabled="presentation.comments.length >= 500">Enter text here...</textarea>
+              <div class="charCounter">
+                {{500 - presentation.comments.length}} characters remaining
+              </div>
             </div>
           </div>
           <div class="col-xs-8">

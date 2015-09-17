@@ -30,7 +30,6 @@ module.exports = {
     })
     .then(function(){
       if(presentationExists){
-
         var newFeedback = {
           _presentation: presentationId,
           scores: [
@@ -44,6 +43,10 @@ module.exports = {
             req.body.question,
             req.body.overall
           ]
+        }
+        // Add comments to feedback object if they exist. For feature/comments.
+        if ( req.body.comments ) {
+          newFeedback.comments = req.body.comments;
         }
 
         create(newFeedback)

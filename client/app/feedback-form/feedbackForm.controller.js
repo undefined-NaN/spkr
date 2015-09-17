@@ -12,15 +12,16 @@ angular.module('spkr.feedback-form', ['ngRoute'])
     $scope.presentation= {
       // date: 'guest',
       // name: 'guest',
-      organization: 50,
-      clarity: 50,
-      volume: 50,
-      posture: 50,
-      prepared: 50,
-      visualAids: 50,
-      connect: 50,
-      question: 50,
-      overall: 50
+      organization: 7,
+      clarity: 7,
+      volume: 7,
+      posture: 7,
+      prepared: 7,
+      visualAids: 7,
+      connect: 7,
+      question: 7,
+      overall: 7,
+      comments: null
     },
 
     
@@ -48,6 +49,16 @@ angular.module('spkr.feedback-form', ['ngRoute'])
       .catch(function(error){
         $location.path('/data-profile')
       })
+    }
+
+    $scope.autoExpand = function(e) {
+        var element = ( typeof e === 'object' ? e.target : document.getElementById(e) );
+        var scrollHeight = element.scrollHeight -60; // replace 60 by the sum of padding-top and padding-bottom
+        element.style.height =  scrollHeight + "px";    
+    };
+  
+    function expand() {
+      $scope.autoExpand('TextArea');
     }
 
     $scope.getData();

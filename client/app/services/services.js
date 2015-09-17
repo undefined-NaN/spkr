@@ -309,20 +309,20 @@ angular.module('spkr.services', [])
     function draw(){
       var maxT = d3.max(distData.map(function(d){ return d3.sum(d); }));
       
-      function tW(d){ return x(d*(distData.length - 1)/50); }
+      function tW(d){ return x(d*(distData.length - 1)/7); }
       
       var svg =d3.select("#distChart").select(".dist");
       
       //x and y axis maps
-      var x = d3.scale.linear().domain([0, distData.length - 1]).range([0, width]);
+      var x = d3.scale.linear().domain([1, distData.length - 1]).range([0, width]);
       var y = d3.scale.linear().domain([0, maxT]).range([height, 0]);
       
       //graph labels
-      function getHLabel(d,i){ return i*10; } 
+      function getHLabel(d,i){ return d; } 
       
       // add horizontal axis labels
       svg.append("g").attr("class","hlabels")
-        .selectAll("text").data(d3.range(100).filter(function(d){ return d%5===0})).enter().append("text")
+        .selectAll("text").data(d3.range(8)).enter().append("text")
         .text(getHLabel).attr("x",function(d,i){ return tW(d)-5;}).attr("y",height+14); 
       
       var area = d3.svg.area().x(function(d) { return x(d.x); })
@@ -400,4 +400,94 @@ angular.module('spkr.services', [])
     presentationGraph: presentationGraph
   };
 
+})
+
+.factory('WordCloud', function() {
+
+  var layout;
+  var fill = d3.scale.category20();;
+
+  function wordMap(comments) {
+    // Takes an array of comments and maps to an array of objects with text and size
+    comments = comments.reduce(function(a,b) {
+      // Flatten the comments into one string
+      return a + ' ' + b;
+    })
+    var stopWords = /^(i|me|my|myself|we|us|our|ours|ourselves|you|your|yours|yourself|yourselves|he|him|his|himself|she|her|hers|herself|it|its|itself|they|them|their|theirs|themselves|what|which|who|whom|whose|this|that|these|those|am|is|are|was|were|be|been|being|have|has|had|having|do|does|did|doing|will|would|should|can|could|ought|i'm|you're|he's|she's|it's|we're|they're|i've|you've|we've|they've|i'd|you'd|he'd|she'd|we'd|they'd|i'll|you'll|he'll|she'll|we'll|they'll|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|doesn't|don't|didn't|won't|wouldn't|shan't|shouldn't|can't|cannot|couldn't|mustn't|let's|that's|who's|what's|here's|there's|when's|where's|why's|how's|a|an|the|and|but|if|or|because|as|until|while|of|at|by|for|with|about|against|between|into|through|during|before|after|above|below|to|from|up|upon|down|in|out|on|off|over|under|again|further|then|once|here|there|when|where|why|how|all|any|both|each|few|more|most|other|some|such|no|nor|not|only|own|same|so|than|too|very|say|says|said|shall)$/
+    var punctuation = /[!"&()*+,-\.\/:;<=>?\[\\\]^`\{|\}~]+/g
+    var wordSeparators = /[\s\u3031-\u3035\u309b\u309c\u30a0\u30fc\uff70]+/g
+    var discard = /^(@|https?:)/
+    var maxLength = 30
+
+
+    function entries(map) {
+      var entries = [];
+      for (var text in map) entries.push({
+        text: text,
+        size: map[text]
+      });
+      return entries;
+    }; 
+
+    function parser(text) {
+      var tags = {};
+      var cases = {};
+      text.split(wordSeparators).forEach(function(word) {
+        if (discard.test(word)) return;
+        word = word.replace(punctuation, "");
+        if (stopWords.test(word.toLowerCase())) return;
+        word = word.substr(0, maxLength);
+        cases[word.toLowerCase()] = word;
+        tags[word = word.toLowerCase()] = (tags[word] || 0) + 1;
+      });
+      tags = entries(tags).sort(function(a, b) { return b.size - a.size; });
+      tags.forEach(function(d) { 
+        d.text = cases[d.text];
+        d.size = d.size*20;
+      });
+      return tags;
+    }
+
+    var result = parser(comments);
+    return result;
+  }
+
+  function makeCloud(comments) {
+    // Initialize the settings of the word cloud
+    var mappedWords = wordMap(comments);
+    console.log(mappedWords);
+    layout = d3.layout.cloud()
+        .size([400, 400])
+        .words(mappedWords)
+        .padding(5)
+        .rotate(function() { return ~~(Math.random() * 2) * 90; })
+        .font("Impact")
+        .fontSize(function(d) { return d.size; })
+        .on("end", draw);
+    layout.start();
+  }
+
+  function draw(words) {
+    // render the word cloud
+    d3.select("#wordcloud").append("svg")
+      .attr("width", layout.size()[0])
+      .attr("height", layout.size()[1])
+      .append("g")
+      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+      .selectAll("text")
+      .data(words)
+      .enter().append("text")
+      .style("font-size", function(d) { return d.size + "px"; })
+      .style("font-family", "Impact")
+      .style("fill", function(d, i) { return fill(i); })
+      .attr("text-anchor", "middle")
+      .attr("transform", function(d) {
+        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      })
+      .text(function(d) { return d.text; });
+  }
+  return {
+    makeCloud: makeCloud,
+    commentWordSizes: wordMap
+  };
 })
