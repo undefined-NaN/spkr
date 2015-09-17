@@ -37,10 +37,14 @@ angular.module('spkr.previous-pres', ['ngRoute'])
         });
         //call the presentationGraph factory function (this is where d3 happens)
         Vis.presentationGraph(criteria, distData);
-        if ( $scope.comments.length === 0 ) {
-          $scope.comments.push('No comments have been received.');
-        }
-        WordCloud.makeCloud($scope.comments);
+        // Create a word cloud if any comments have been posted.
+        if ( $scope.comments.length > 0 ) {
+          WordCloud.makeCloud($scope.comments);
+        }      
+      }
+      // Set a default message in case no comments have been posted.
+      if ( $scope.comments.length === 0 ) {
+        $scope.comments.push('No comments have been received.');
       }
     })
     .catch(function(error){
