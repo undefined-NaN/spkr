@@ -309,20 +309,20 @@ angular.module('spkr.services', [])
     function draw(){
       var maxT = d3.max(distData.map(function(d){ return d3.sum(d); }));
       
-      function tW(d){ return x(d*(distData.length - 1)/50); }
+      function tW(d){ return x(d*(distData.length - 1)/7); }
       
       var svg =d3.select("#distChart").select(".dist");
       
       //x and y axis maps
-      var x = d3.scale.linear().domain([0, distData.length - 1]).range([0, width]);
+      var x = d3.scale.linear().domain([1, distData.length - 1]).range([0, width]);
       var y = d3.scale.linear().domain([0, maxT]).range([height, 0]);
       
       //graph labels
-      function getHLabel(d,i){ return i*10; } 
+      function getHLabel(d,i){ return d; } 
       
       // add horizontal axis labels
       svg.append("g").attr("class","hlabels")
-        .selectAll("text").data(d3.range(100).filter(function(d){ return d%5===0})).enter().append("text")
+        .selectAll("text").data(d3.range(8)).enter().append("text")
         .text(getHLabel).attr("x",function(d,i){ return tW(d)-5;}).attr("y",height+14); 
       
       var area = d3.svg.area().x(function(d) { return x(d.x); })

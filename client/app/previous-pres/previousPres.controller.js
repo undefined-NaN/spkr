@@ -20,7 +20,7 @@ angular.module('spkr.previous-pres', ['ngRoute'])
         //create an array or arrays filled with zeroes
         var distData = [];
         //Note: Scale is hardcoded here.
-        for (var i = 0; i <= 100; i++) {
+        for (var i = 0; i <= 7; i++) {
           distData[i] = [];
           for (var j = 0; j < criteria.length; j++) {
             distData[i][j] = 0;
