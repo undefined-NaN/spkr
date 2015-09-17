@@ -599,6 +599,10 @@ input:-moz-placeholder {
   cursor: pointer;
 }
 
+#wordcloud {
+  width: 400px;
+  margin: 0 auto;
+}
 @media only screen and (min-width: 768px) {
     #comments {
       width: 450px;
