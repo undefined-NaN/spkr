@@ -595,6 +595,10 @@ input:-moz-placeholder {
   color: #555;
 }
 
+#feedbackDistro {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) {
     #comments {
       width: 450px;
