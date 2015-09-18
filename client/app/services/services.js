@@ -288,104 +288,131 @@ angular.module('spkr.services', [])
     }
 
  /* start d3-feature */
-    /* BEGIN TEST */
-
-    function lineChart() { //data is-> skillsAverage
+    function lineChart(scoresData) { //data is-> skillsAverage
       
       var LC = {};
       //add title
       $('#allTime').text('scores by criteria for all presentations over time');
 
-      var data = [[
-                        "2000",
-                        "5"
-                        
-                    ], [
-                        "2002",
-                        "3"
-                    ], [
-                        "2003",
-                        "7"
-                    ], [
-                        "2004",
-                        "5"
-                    ], [
-                        "2004",
-                        "2"
-                    ]];
-                    var data2 = [[
-                        "2000",
-                        "5"
-                    ], [
-                        "2002",
-                        "5"
-                    ], [
-                        "2003",
-                        "3"
-                    ], [
-                        "2004",
-                        "7"
-                    ], [
-                        "2005",
-                        "2"
-                    ]];
-                    var vis = d3.select("#visualisation"),
-                        WIDTH = 400,
-                        HEIGHT = 250,
-                        MARGINS = {
-                            top: 10,
-                            right: 10,
-                            bottom: 10,
-                            left: 10
-                        }
-                        //create x and y scales and add to the axis
-                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000, 2010]),
-                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,7]),
-                        xAxis = d3.svg.axis()
-                        .scale(xScale),
-                        yAxis = d3.svg.axis()
-                        .scale(yScale)
-                        .orient("left");
-                    
-                    //add axis to svg
-                    vis.append("svg:g")
-                        .attr("class", "x axis")
-                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
-                        .call(xAxis);
-                    vis.append("svg:g")
-                        .attr("class", "y axis")
-                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
-                        .call(yAxis);
+    var skill0 = [],
+        skill1 = [], 
+        skill2 = [], 
+        skill3 = [], 
+        skill4 = [],
+        skill5 = [],
+        skill6 = [],
+        skill7 = [],
+        skill8 = [];
 
-                    //create svg line path out of data
-                    var lineGen = d3.svg.line()
-                        .x(function(d) {
-                          console.log(d, " :row in line svg")
-                            return xScale(d[0]); // date
-                        })
-                        .y(function(d) {
-                          console.log(d, " :col in line svg")
-                            return yScale(d[1]); // score
-                        })
-                        .interpolate("basis");
-                    vis.append('svg:path')
-                        .attr('d', lineGen(data))
-                        .attr('stroke', 'green')
-                        .attr('stroke-width', 3)
-                        .attr('fill', 'none');
-                    vis.append('svg:path')
-                        .attr('d', lineGen(data2))
-                        .attr('stroke', 'blue')
-                        .attr('stroke-width', 3)
-                        .attr('fill', 'none');
+    for (var i=0; i<6; i++) {
+      skill0.push([ scoresData[i]["date"], scoresData[i]["scores"][0] ]);
+      skill1.push([ scoresData[i]["date"], scoresData[i]["scores"][1] ]);
+      skill2.push([ scoresData[i]["date"], scoresData[i]["scores"][2] ]);
+      skill3.push([ scoresData[i]["date"], scoresData[i]["scores"][3] ]);
+      skill4.push([ scoresData[i]["date"], scoresData[i]["scores"][4] ]);
+      skill5.push([ scoresData[i]["date"], scoresData[i]["scores"][5] ]);
+      skill6.push([ scoresData[i]["date"], scoresData[i]["scores"][6] ]);
+      skill7.push([ scoresData[i]["date"], scoresData[i]["scores"][7] ]);
+      skill8.push([ scoresData[i]["date"], scoresData[i]["scores"][8] ]);
+    }
+
+      var vis = d3.select("#visualisation"),
+          WIDTH = 900,
+          HEIGHT = 250,
+          MARGINS = {
+              top: 10,
+              right: 10,
+              bottom: 10,
+              left: 10
+          }
+          //create x and y scales and add to the axis
+
+          // xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000, 2010]),
+          //CHANGE: domain to 1 to 7 after pulling changes from the master branch
+      xScale = d3.scale.ordinal().rangeRoundBands([0, 1000], 0.1, 0)
+                      .domain(skill0.map(function(d) { return d[0]; })),
+      yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,100]),
+      
+      
+
+      xAxis = d3.svg.axis()
+      .scale(xScale),
+      yAxis = d3.svg.axis()
+      .scale(yScale)
+      .orient("left");
+      
+      //add axis to svg
+      vis.append("svg:g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+          .call(xAxis);
+      vis.append("svg:g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+          .call(yAxis);
+
+      //create svg line path out of skill0
+      var lineGen = d3.svg.line()
+          .x(function(d) {
+            console.log(d, " :row in line svg")
+              return xScale(d[0]); // date
+          })
+          .y(function(d) {
+            console.log(d, " :col in line svg")
+              return yScale(d[1]); // score
+          })
+          .interpolate("basis");
+      vis.append('svg:path')
+          .attr('d', lineGen(skill0))
+          .attr('stroke', 'red')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill1))
+          .attr('stroke', 'green')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill2))
+          .attr('stroke', 'orange')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill3))
+          .attr('stroke', 'grey')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill4))
+          .attr('stroke', 'purple')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill5))
+          .attr('stroke', 'cyan')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill6))
+          .attr('stroke', 'lightgreen')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill7))
+          .attr('stroke', 'pink')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+      vis.append('svg:path')
+          .attr('d', lineGen(skill7))
+          .attr('stroke', 'maroon')
+          .attr('stroke-width', 3)
+          .attr('fill', 'none');
+
+      // var skillColor = ["red","green","orange","grey","purple","cyan","lightgreen","pink","maroon"];
 
       return LC;
 
     }
-
-
-    /* END TEST */
-
       /* end-d3-feature */
     
     //create an array of arrays with the criteria and average score for each criteria
@@ -403,14 +430,8 @@ angular.module('spkr.services', [])
     var SC = skillChart(dateAverage);
 
     /* start line graph feature */
-
-    //create an array of arrays with date, title and average score for each crieria for each presentation
-    // var  allTimeSkillAverage = [];
-    // //create the line graph
-    // var LC = timeChart(allTimeSkillAverage);
-    // var LC = lineChart(skillsAverage); //use this for testing. A single line chart.
-    // lineChart();
-    var LC = lineChart();
+    //create the line chart
+    var LC = lineChart(scoresData);
         /* end line graph feature */
   }
 
