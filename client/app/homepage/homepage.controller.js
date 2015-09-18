@@ -6,13 +6,13 @@ angular.module('spkr.homepage', [])
         $location.path('/data-profile');
       } else {
         $location.path('/')
-      } 
+      }
     }, true);
-    
+
     //get all the user's data
     Auth.getAllData()
     .then(function(data){
-      //the first element of the array conatains the username, 
+      //the first element of the array conatains the username,
       //the remaining elements are presentations
       $scope.user = data[0].username;
       if (data.length > 1) { //if the user has any presentations
@@ -54,7 +54,7 @@ angular.module('spkr.homepage', [])
           Vis.homepageGraph(criteria, scoresData);
         }
       } else { //if the user doesn't have any presentations
-        $("#fallbackMessage").append("<h2>Oh no!</h2><p>It looks like you haven't made any presentations yet.  <a href='/#/presentations'>Create</a> your first presentation to start recieving feedback!</p>")
+        $("#fallbackMessage").append("<h2>Welcome!</h2><p>It looks like you haven't made any presentations yet.  <a href='/#/presentations'>Create</a> your first presentation to start recieving feedback!</p>")
       }
     })
     .catch(function(error){
