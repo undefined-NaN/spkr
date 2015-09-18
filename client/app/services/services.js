@@ -288,6 +288,7 @@ angular.module('spkr.services', [])
     }
 
  /* start d3-feature */
+
     function lineChart(scoresData) { //data is-> skillsAverage
       
       var LC = {};
@@ -331,9 +332,8 @@ angular.module('spkr.services', [])
           //CHANGE: domain to 1 to 7 after pulling changes from the master branch
       xScale = d3.scale.ordinal().rangeRoundBands([0, 1000], 0.1, 0)
                       .domain(skill0.map(function(d) { return d[0]; })),
+
       yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,100]),
-      
-      
 
       xAxis = d3.svg.axis()
       .scale(xScale),
@@ -342,14 +342,14 @@ angular.module('spkr.services', [])
       .orient("left");
       
       //add axis to svg
-      vis.append("svg:g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
-          .call(xAxis);
-      vis.append("svg:g")
-          .attr("class", "y axis")
-          .attr("transform", "translate(" + (MARGINS.left) + ",0)")
-          .call(yAxis);
+      // vis.append("svg:g")
+      //     .attr("class", "x axis")
+      //     .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+      //     .call(xAxis);
+      // vis.append("svg:g")
+      //     .attr("class", "y axis")
+      //     .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+      //     .call(yAxis);
 
       //create svg line path out of skill0
       var lineGen = d3.svg.line()
@@ -407,6 +407,16 @@ angular.module('spkr.services', [])
           .attr('stroke', 'maroon')
           .attr('stroke-width', 3)
           .attr('fill', 'none');
+
+      //add axes to the chart
+      vis.append("svg:g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+          .call(xAxis);
+      // vis.append("svg:g")
+      //     .attr("class", "y axis")
+      //     .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+      //     .call(yAxis);
 
       // var skillColor = ["red","green","orange","grey","purple","cyan","lightgreen","pink","maroon"];
 
