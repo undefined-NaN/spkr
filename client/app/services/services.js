@@ -288,34 +288,36 @@ angular.module('spkr.services', [])
     }
 
  /* start d3-feature */
+ /* needs refactoring: create single data variable, colors in a variable. */
 
-    function lineChart(scoresData) { //data is-> skillsAverage
+    function lineChart(scoresData) { 
       
       var LC = {};
       //add title
       $('#allTime').text('scores by criteria for all presentations over time');
 
-    var skill0 = [],
-        skill1 = [], 
-        skill2 = [], 
-        skill3 = [], 
-        skill4 = [],
-        skill5 = [],
-        skill6 = [],
-        skill7 = [],
-        skill8 = [];
+      //select the data for each presentation per skill
+      var skill0 = [],
+          skill1 = [], 
+          skill2 = [], 
+          skill3 = [], 
+          skill4 = [],
+          skill5 = [],
+          skill6 = [],
+          skill7 = [],
+          skill8 = [];
 
-    for (var i=0; i<6; i++) {
-      skill0.push([ scoresData[i]["date"], scoresData[i]["scores"][0] ]);
-      skill1.push([ scoresData[i]["date"], scoresData[i]["scores"][1] ]);
-      skill2.push([ scoresData[i]["date"], scoresData[i]["scores"][2] ]);
-      skill3.push([ scoresData[i]["date"], scoresData[i]["scores"][3] ]);
-      skill4.push([ scoresData[i]["date"], scoresData[i]["scores"][4] ]);
-      skill5.push([ scoresData[i]["date"], scoresData[i]["scores"][5] ]);
-      skill6.push([ scoresData[i]["date"], scoresData[i]["scores"][6] ]);
-      skill7.push([ scoresData[i]["date"], scoresData[i]["scores"][7] ]);
-      skill8.push([ scoresData[i]["date"], scoresData[i]["scores"][8] ]);
-    }
+      for (var i=0; i<6; i++) {
+        skill0.push([ scoresData[i]["date"], scoresData[i]["scores"][0] ]);
+        skill1.push([ scoresData[i]["date"], scoresData[i]["scores"][1] ]);
+        skill2.push([ scoresData[i]["date"], scoresData[i]["scores"][2] ]);
+        skill3.push([ scoresData[i]["date"], scoresData[i]["scores"][3] ]);
+        skill4.push([ scoresData[i]["date"], scoresData[i]["scores"][4] ]);
+        skill5.push([ scoresData[i]["date"], scoresData[i]["scores"][5] ]);
+        skill6.push([ scoresData[i]["date"], scoresData[i]["scores"][6] ]);
+        skill7.push([ scoresData[i]["date"], scoresData[i]["scores"][7] ]);
+        skill8.push([ scoresData[i]["date"], scoresData[i]["scores"][8] ]);
+      }
 
       var vis = d3.select("#visualisation"),
           WIDTH = 900,
@@ -330,7 +332,7 @@ angular.module('spkr.services', [])
 
           // xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000, 2010]),
           //CHANGE: domain to 1 to 7 after pulling changes from the master branch
-      xScale = d3.scale.ordinal().rangeRoundBands([0, 1000], 0.1, 0)
+      xScale = d3.scale.ordinal().rangeRoundBands([0, 1400], 0.1, 0)
                       .domain(skill0.map(function(d) { return d[0]; })),
 
       yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,100]),
