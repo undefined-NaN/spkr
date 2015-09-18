@@ -113,6 +113,7 @@ angular.module('spkr.services', [])
 .factory('Vis', function ($http, $location, $window) {
 
   var homepageGraph = function(criteria, scoresData) {
+    console.log(scoresData);
     
     var dateColor = 'steelblue';
     var skillColor = ["red","green","orange","grey","purple","cyan","lightgreen","pink","maroon"];
@@ -286,41 +287,131 @@ angular.module('spkr.services', [])
       return SC;
     }
 
-      /* start d3-feature */
+ /* start d3-feature */
+    /* BEGIN TEST */
 
-    var lineGraph = function(data) {
-      //save data to be used
+    function lineChart() { //data is-> skillsAverage
+      
+      var LC = {};
+      //add title
+      $('#allTime').text('scores by criteria for all presentations over time');
 
-      //create svg for line graph
+      var data = [[
+                        "2000",
+                        "5"
+                        
+                    ], [
+                        "2002",
+                        "3"
+                    ], [
+                        "2003",
+                        "7"
+                    ], [
+                        "2004",
+                        "5"
+                    ], [
+                        "2004",
+                        "2"
+                    ]];
+                    var data2 = [[
+                        "2000",
+                        "5"
+                    ], [
+                        "2002",
+                        "5"
+                    ], [
+                        "2003",
+                        "3"
+                    ], [
+                        "2004",
+                        "7"
+                    ], [
+                        "2005",
+                        "2"
+                    ]];
+                    var vis = d3.select("#visualisation"),
+                        WIDTH = 400,
+                        HEIGHT = 250,
+                        MARGINS = {
+                            top: 10,
+                            right: 10,
+                            bottom: 10,
+                            left: 10
+                        }
+                        //create x and y scales and add to the axis
+                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000, 2010]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,7]),
+                        xAxis = d3.svg.axis()
+                        .scale(xScale),
+                        yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient("left");
+                    
+                    //add axis to svg
+                    vis.append("svg:g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+                        .call(xAxis);
+                    vis.append("svg:g")
+                        .attr("class", "y axis")
+                        .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+                        .call(yAxis);
 
-      //create function for x-axis mapping
+                    //create svg line path out of data
+                    var lineGen = d3.svg.line()
+                        .x(function(d) {
+                          console.log(d, " :row in line svg")
+                            return xScale(d[0]); // date
+                        })
+                        .y(function(d) {
+                          console.log(d, " :col in line svg")
+                            return yScale(d[1]); // score
+                        })
+                        .interpolate("basis");
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data))
+                        .attr('stroke', 'green')
+                        .attr('stroke-width', 3)
+                        .attr('fill', 'none');
+                    vis.append('svg:path')
+                        .attr('d', lineGen(data2))
+                        .attr('stroke', 'blue')
+                        .attr('stroke-width', 3)
+                        .attr('fill', 'none');
 
-      //add x-axis to line graph svg
-
-      //create function for y-axis mapping
-
-      //add y-axis to line graph svg
-
-      //create lines out of data
-
-      //create mouse utility functions 
-        //mouse over should display specific skills
-
-      //create function to update the line chart
-
-      //return the chart
+      return LC;
 
     }
+
+
+    /* END TEST */
+
       /* end-d3-feature */
     
     //create an array of arrays with the criteria and average score for each criteria
     var dateAverage = criteria.map(function(d,i){return [d,Math.round(d3.mean(scoresData.map(function(t){return t.scores[i];})))];});    
+    console.log(dateAverage, " :date average, being fed to the skillchart")
     //create an array of arrays with the date, title, and average score for each presentation
     var skillsAverage = scoresData.map(function(d){return [d.date,Math.round(d3.mean(d.scores)),d.title]});
+    console.log(skillsAverage, " :skills average, being fed into the lineChart (date chart)");
+    //create an array of arrays with the date, title, and average score for each skill for each presentation
+    var skillsAverageOverTime = scoresData.map(function(d){return [d.date,Math.round(d3.mean(d.scores)),d.title]});
+    console.log(skillsAverage, " :skills average, being fed into the lineChart (date chart)");
     //create the date chart
     var DC = dateChart(skillsAverage);
     //create the skill chart
-    var SC = skillChart(dateAverage);    
+    var SC = skillChart(dateAverage);
+
+    /* start line graph feature */
+
+    //create an array of arrays with date, title and average score for each crieria for each presentation
+    // var  allTimeSkillAverage = [];
+    // //create the line graph
+    // var LC = timeChart(allTimeSkillAverage);
+    // var LC = lineChart(skillsAverage); //use this for testing. A single line chart.
+    // lineChart();
+    var LC = lineChart();
+        /* end line graph feature */
   }
 
   var presentationGraph = function(criteria, distData) {

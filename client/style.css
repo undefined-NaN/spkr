@@ -200,20 +200,27 @@ rect:hover {
   opacity:.75
 }
 .axis {
-  font:12px sans-serif
+  font:12px sans-serif;
+/*  fill: none;
+  stroke: #777;
+  shape-rendering: crispEdges;*/
 }
 .x.axis path {
   display:none
 }
-#dateChart, #skillChart, #distChart {
+#dateChart, #skillChart, #distChart, #lineChart {
   text-align: center;
+}
+
+#visualisation {
+  padding-left: 20px;
 }
 .table {
 	text-align: left;
 }
 path {
   fill-opacity:0.8;
-  stroke-opacity:0;
+  stroke-opacity:1;
 }
 .legend {
   display:inline-block;
