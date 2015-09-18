@@ -5,14 +5,14 @@ angular.module('spkr.homepage', [])
       if (authed) {
         $location.path('/data-profile');
       } else {
-        $location.path('/')
-      } 
+        $location.path('/');
+      }
     }, true);
-    
+
     //get all the user's data
     Auth.getAllData()
     .then(function(data){
-      //the first element of the array conatains the username, 
+      //the first element of the array conatains the username,
       //the remaining elements are presentations
       $scope.user = data[0].username;
       if (data.length > 1) { //if the user has any presentations
@@ -31,7 +31,7 @@ angular.module('spkr.homepage', [])
                 sums[i] += parseInt(score);
               });
             });
-            var avgs = sums.map(function(sum){return Math.round(sum/data[i].__v)});
+            var avgs = sums.map(function(sum){return Math.round(sum/data[i].__v);});
             scoresData.push({date: data[i].date.slice(0,10), title: data[i].title, scores: avgs});
           }
         }
@@ -47,17 +47,17 @@ angular.module('spkr.homepage', [])
         });
         if (scoresData.length === 0) { //if there are no presentations with feedbacks
           $("#fallbackMessage").append(
-          "<h2>Oh no!</h2><p>It looks like you haven't recieved any feedback yet." +
-          "  Make sure to give out your <a href='/#/presentations'>feedback form URL</a> to start recieving feedback!</p>")
+          "<h2>Welcome!</h2><p>It looks like you haven't recieved any feedback yet." +
+          "  Make sure to give out your <a href='/#/presentations'>feedback form URL</a> to start recieving feedback!</p>");
         } else {
           //call the homepageGraph factory function (this is where d3 happens)
           Vis.homepageGraph(criteria, scoresData);
         }
       } else { //if the user doesn't have any presentations
-        $("#fallbackMessage").append("<h2>Oh no!</h2><p>It looks like you haven't made any presentations yet.  <a href='/#/presentations'>Create</a> your first presentation to start recieving feedback!</p>")
+        $("#fallbackMessage").append("<h2>Welcome!</h2><p>It looks like you haven't made any presentations yet.  <a href='/#/presentations'>Create</a> your first presentation to start recieving feedback!</p>");
       }
     })
     .catch(function(error){
-      console.err(error)
-    })
+      console.err(error);
+    });
   });

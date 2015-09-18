@@ -7,6 +7,7 @@
     <link rel='shortcut icon' type='image/x-icon' href="favicon.ico" />
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="animations.css" />
   </head>
   <body ng-class="{landing: withBackground}">
     <header  class="container-fluid" ng-controller="IndexController">
@@ -25,13 +26,13 @@
       </nav>
     </header>
     <main>
-      <div ng-view>
+      <div class="page {{ pageClass }}" ng-view> <!--class="fx-fade-right fx-speed-800"-->
       </div>
     </main>
     <footer ng-hide="withBackground">
       <div class="powered-by">
         <div class="text">
-      powered by <a target="_blank" href="https://github.com/glorypod/">glory-pod</a>
+          <p>powered by <strike><a target="_blank" href="https://github.com/503.html">glory-pod</a></strike> undefined-NaN</p>
         </div>
       </div>
     </footer>
@@ -41,6 +42,9 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-route/angular-route.min.js"></script>
     <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <!-- <script src="lib/gsap/src/minified/TweenMax.min.js"></script> -->
+    <!-- <script src="lib/ngFx/dist/ngFx.min.js"></script> -->
     <script src="app/auth/auth.js"></script>
     <script src="app/index/backgroundController.js"></script>
     <script src="app/index/indexController.js"></script>

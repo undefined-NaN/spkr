@@ -8,9 +8,11 @@ angular.module('spkr', [
   'spkr.index',
   'spkr.background',
   'ngRoute',
-  'ui.bootstrap' 
+  'ui.bootstrap',
+  // 'ngFx',
+  'ngAnimate'
   ]
-) 
+)
 
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -62,7 +64,7 @@ angular.module('spkr', [
       templateUrl: 'app/homepage/homepage.html',
       controller: 'HomepageController'
     })
-    
+
     .when('/logout', {
       templateUrl: 'app/auth/landing.html',
       controller: 'AuthController',
@@ -72,6 +74,6 @@ angular.module('spkr', [
 
       }
     })
-    .otherwise('/')
-    
+    .otherwise('/');
+
 });
