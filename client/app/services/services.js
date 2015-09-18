@@ -332,10 +332,10 @@ angular.module('spkr.services', [])
 
           // xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000, 2010]),
           //CHANGE: domain to 1 to 7 after pulling changes from the master branch
-      xScale = d3.scale.ordinal().rangeRoundBands([0, 1400], 0.1, 0)
+      xScale = d3.scale.ordinal().rangeRoundBands([0, 1200], 0.1, 0)
                       .domain(skill0.map(function(d) { return d[0]; })),
 
-      yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,100]),
+      yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,8]),
 
       xAxis = d3.svg.axis()
       .scale(xScale),
