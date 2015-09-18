@@ -8,7 +8,9 @@ angular.module('spkr', [
   'spkr.index',
   'spkr.background',
   'ngRoute',
-  'ui.bootstrap' 
+  'ui.bootstrap',
+  'ngFx', 
+  'ngAnimate'
   ]
 ) 
 
