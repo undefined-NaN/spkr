@@ -1,29 +1,31 @@
 <div class="container">
-  <h1>Feedback Score Distribution</h1>
-  <div class="row previous-presentation">
-    <div class="col-md-4">
-      <h2>Presentation Title</h2>
-      <div class="data">{{title}}</div>
+  <h1 id="feedbackDistro" slide-toggle="#feedbackSlider" ng-click="changeClass()">Feedback Score Distribution <i class="glyphicon" id="toggleSlide" ng-class="class"></i></h1>
+  <div id="feedbackSlider" class="slideable">
+    <div class="row previous-presentation">
+      <div class="col-md-4">
+        <h2>Presentation Title</h2>
+        <div class="data">{{title}}</div>
+      </div>
+      <div class="col-md-4">
+        <h2>Date</h2>
+        <div class="data">{{date | date : "mediumDate" }}</div>
+      </div>
+      <div class="col-md-4">
+        <h2>Feedback Received</h2>
+        <div class="data">{{feedbacks}}</div> 
+      </div>
     </div>
-    <div class="col-md-4">
-      <h2>Date</h2>
-      <div class="data">{{date | date : "mediumDate" }}</div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="distChart">
+        </div>
+      </div>
     </div>
-    <div class="col-md-4">
-      <h2>Feedback Received</h2>
-      <div class="data">{{feedbacks}}</div> 
-    </div>
-  </div>
-  <div class="row">
-  	<div class="col-md-12">
-	  	<div id="distChart">
-	  	</div>
-  	</div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <br>
-      <h1>Comments</h1>
+      <h1 slide-toggle="#commentsSlider">Comments</h1>
     </div>
   </div>
   <div class="row"> <!--This row does not add up to 12 due to the svg sizing strangely. -->
@@ -35,7 +37,9 @@
         </div>
       </div>
     </div>
-    <br>
-    <div id="wordcloud" class="col-md-3"></div>
+      <div class="col-md-3">
+        <div id="wordcloud">
+      </div>  
+    </div>
   </div>
 </div>

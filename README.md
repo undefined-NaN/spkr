@@ -16,6 +16,7 @@
     1. [Running tests](#running-tests)
 1. [Roadmap](#roadmap)
 1. [Known Bugs](#known-bugs)
+1. [New Features](#new-features)
 1. [Avenues to explore](#avenues-to-explore)
 1. [Contributing](#contributing)
 
@@ -99,6 +100,12 @@ View the project roadmap [here](https://github.com/glorypod/spkr/issues)
 - Shorten anonymous feedback form link url
 
 - Please see our task backlog [here](https://waffle.io/glorypod/spkr) for more information
+
+## New Features
+- Added the ability for users to add additional comments
+- Displayed a word map built from additional comments
+- Added additional styling to the previous presentation dashboard
+- Improve styling on landing page
 
 ## Contributing
 

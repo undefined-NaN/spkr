@@ -443,7 +443,7 @@ angular.module('spkr.services', [])
       tags = entries(tags).sort(function(a, b) { return b.size - a.size; });
       tags.forEach(function(d) { 
         d.text = cases[d.text];
-        d.size = d.size*20;
+        d.size = Math.pow(d.size, 1.5)*10;
       });
       return tags;
     }

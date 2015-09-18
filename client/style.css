@@ -168,7 +168,7 @@ h1 {
 /********** Comments ***********/
 
 .comments {
-  height: 300px;
+  max-height: 300px;
   overflow: scroll;
   overflow-y: auto;
   overflow-x: auto;
@@ -590,6 +590,19 @@ input:-moz-placeholder {
   overflow: hidden;
 }
 
+#toggleSlide {
+  font-size: .6em;
+  color: #555;
+}
+
+#feedbackDistro {
+  cursor: pointer;
+}
+
+#wordcloud {
+  width: 400px;
+  margin: 30px auto 0;
+}
 @media only screen and (min-width: 768px) {
     #comments {
       width: 450px;
