@@ -74,6 +74,6 @@ angular.module('spkr', [
 
       }
     })
-    .otherwise('/')
+    .otherwise('/');
 
 });
